@@ -1,0 +1,1236 @@
+WG size of kernel = 256 
+---> piPlatformsGet(
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b984
+) --->        pi_result : PI_SUCCESS
+---> piPlatformsGet(
+       <unknown> : 2
+       <unknown> : 0x2334ea0
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDevicesGet(
+       pi_platform : 0x2487450
+       <unknown> : 4294967295
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b7cc
+) --->        pi_result : PI_SUCCESS
+---> piDevicesGet(
+       pi_platform : 0x2487450
+       <unknown> : 4294967295
+       <unknown> : 1
+       <unknown> : 0x256b590
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x2487450
+       <unknown> : 2306
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b728
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x2487450
+       <unknown> : 2306
+       <unknown> : 28
+       <unknown> : 
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x2487450
+       <unknown> : 2305
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b728
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x2487450
+       <unknown> : 2305
+       <unknown> : 12
+       <unknown> : 
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2487600
+       <unknown> : 4139
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b7f8
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2487600
+       <unknown> : 4139
+       <unknown> : 30
+       <unknown> : 
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2487600
+       <unknown> : 4141
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b820
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2487600
+       <unknown> : 4141
+       <unknown> : 12
+       <unknown> : €öù
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2487600
+       <unknown> : 4096
+       <unknown> : 8
+       <unknown> : 0x253a878
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2487600
+       <unknown> : 4162
+       <unknown> : 8
+       <unknown> : 0x7fff4a34b6d0
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2487600
+       <unknown> : 4096
+       <unknown> : 8
+       <unknown> : 0x7fff4a34b710
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDevicesGet(
+       pi_platform : 0x253b0e8
+       <unknown> : 4294967295
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b7cc
+) --->        pi_result : PI_SUCCESS
+---> piDevicesGet(
+       pi_platform : 0x253b0e8
+       <unknown> : 4294967295
+       <unknown> : 1
+       <unknown> : 0x256b590
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x253b0e8
+       <unknown> : 2306
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b728
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x253b0e8
+       <unknown> : 2306
+       <unknown> : 16
+       <unknown> : €öù
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x253b0e8
+       <unknown> : 2305
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b728
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x253b0e8
+       <unknown> : 2305
+       <unknown> : 17
+       <unknown> : €öù
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2571c28
+       <unknown> : 4139
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b7f8
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2571c28
+       <unknown> : 4139
+       <unknown> : 42
+       <unknown> : è7Çü~
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2571c28
+       <unknown> : 4141
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b820
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2571c28
+       <unknown> : 4141
+       <unknown> : 15
+       <unknown> : °üº
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2571c28
+       <unknown> : 4096
+       <unknown> : 8
+       <unknown> : 0x253a7e8
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2571c28
+       <unknown> : 4162
+       <unknown> : 8
+       <unknown> : 0x7fff4a34b6d0
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2571c28
+       <unknown> : 4096
+       <unknown> : 8
+       <unknown> : 0x7fff4a34b710
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piPlatformsGet(
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b984
+ZE ---> zeInit(ZE_INIT_FLAG_NONE)
+ZE ---> piPlatformsGet
+) --->        pi_result : PI_SUCCESS
+---> piPlatformsGet(
+       <unknown> : 1
+       <unknown> : 0x2fa1990
+       <unknown> : 0
+ZE ---> zeInit(ZE_INIT_FLAG_NONE)
+ZE ---> piPlatformsGet
+) --->        pi_result : PI_SUCCESS
+---> piDevicesGet(
+       pi_platform : 0x7efcc41da0c8
+       <unknown> : 4294967295
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b7cc
+ZE ---> zeDriverGet(&ze_driver_count, nullptr)
+ZE ---> zeDriverGet(&ze_driver_count, &ze_driver)
+ZE ---> zeDeviceGet(ze_driver, &ze_device_count, nullptr)
+ZE ---> zeDeviceGet(ze_driver, &ze_device_count, ze_devices)
+) --->        pi_result : PI_SUCCESS
+---> piDevicesGet(
+       pi_platform : 0x7efcc41da0c8
+       <unknown> : 4294967295
+       <unknown> : 1
+       <unknown> : 0x2e558e0
+       <unknown> : 0
+ZE ---> zeDriverGet(&ze_driver_count, nullptr)
+ZE ---> zeDriverGet(&ze_driver_count, &ze_driver)
+ZE ---> zeDeviceGet(ze_driver, &ze_device_count, nullptr)
+ZE ---> zeDeviceGet(ze_driver, &ze_device_count, ze_devices)
+ZE ---> zeCommandListCreateImmediate(ze_device, &ze_command_queue_desc, &L0PiDevice->L0CommandListInit)
+ZE ---> zeDeviceGetProperties( ze_device, &L0PiDevice->L0DeviceProperties)
+ZE ---> zeDeviceGetComputeProperties( ze_device, &L0PiDevice->L0DeviceComputeProperties)
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x7efcc41da0c8
+       <unknown> : 2306
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b728
+ZE ---> zeDriverGetProperties(ze_driver_global, &ze_driver_properties)
+==========================
+SYCL over Level-Zero 0.8
+==========================
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x7efcc41da0c8
+       <unknown> : 2306
+       <unknown> : 26
+       <unknown> : 
+       <unknown> : 0
+ZE ---> zeDriverGetProperties(ze_driver_global, &ze_driver_properties)
+==========================
+SYCL over Level-Zero 0.8
+==========================
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x7efcc41da0c8
+       <unknown> : 2305
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b728
+ZE ---> zeDriverGetProperties(ze_driver_global, &ze_driver_properties)
+==========================
+SYCL over Level-Zero 0.8
+==========================
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x7efcc41da0c8
+       <unknown> : 2305
+       <unknown> : 15
+       <unknown> : 
+       <unknown> : 0
+ZE ---> zeDriverGetProperties(ze_driver_global, &ze_driver_properties)
+==========================
+SYCL over Level-Zero 0.8
+==========================
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2e55920
+       <unknown> : 4139
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b7f8
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, nullptr )
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, ze_device_memory_properties )
+ZE ---> zeDeviceGetImageProperties( ze_device, &ze_device_image_properties )
+ZE ---> zeDeviceGetKernelProperties( ze_device, &ze_device_kernel_properties )
+ZE ---> zeDeviceGetCacheProperties( ze_device, &ze_device_cache_properties )
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2e55920
+       <unknown> : 4139
+       <unknown> : 14
+       <unknown> : 
+       <unknown> : 0
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, nullptr )
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, ze_device_memory_properties )
+ZE ---> zeDeviceGetImageProperties( ze_device, &ze_device_image_properties )
+ZE ---> zeDeviceGetKernelProperties( ze_device, &ze_device_kernel_properties )
+ZE ---> zeDeviceGetCacheProperties( ze_device, &ze_device_cache_properties )
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2e55920
+       <unknown> : 4141
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b820
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, nullptr )
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, ze_device_memory_properties )
+ZE ---> zeDeviceGetImageProperties( ze_device, &ze_device_image_properties )
+ZE ---> zeDeviceGetKernelProperties( ze_device, &ze_device_kernel_properties )
+ZE ---> zeDeviceGetCacheProperties( ze_device, &ze_device_cache_properties )
+ZE ---> zeDriverGetProperties(ze_driver_global, &ze_driver_properties)
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2e55920
+       <unknown> : 4141
+       <unknown> : 4
+       <unknown> : ¸7Çü~
+       <unknown> : 0
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, nullptr )
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, ze_device_memory_properties )
+ZE ---> zeDeviceGetImageProperties( ze_device, &ze_device_image_properties )
+ZE ---> zeDeviceGetKernelProperties( ze_device, &ze_device_kernel_properties )
+ZE ---> zeDeviceGetCacheProperties( ze_device, &ze_device_cache_properties )
+ZE ---> zeDriverGetProperties(ze_driver_global, &ze_driver_properties)
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2e55920
+       <unknown> : 4096
+       <unknown> : 8
+       <unknown> : 0x2e57098
+       <unknown> : 0
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, nullptr )
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, ze_device_memory_properties )
+ZE ---> zeDeviceGetImageProperties( ze_device, &ze_device_image_properties )
+ZE ---> zeDeviceGetKernelProperties( ze_device, &ze_device_kernel_properties )
+ZE ---> zeDeviceGetCacheProperties( ze_device, &ze_device_cache_properties )
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2e55920
+       <unknown> : 4162
+       <unknown> : 8
+       <unknown> : 0x7fff4a34b6d0
+       <unknown> : 0
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, nullptr )
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, ze_device_memory_properties )
+ZE ---> zeDeviceGetImageProperties( ze_device, &ze_device_image_properties )
+ZE ---> zeDeviceGetKernelProperties( ze_device, &ze_device_kernel_properties )
+ZE ---> zeDeviceGetCacheProperties( ze_device, &ze_device_cache_properties )
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2e55920
+       <unknown> : 4096
+       <unknown> : 8
+       <unknown> : 0x7fff4a34b710
+       <unknown> : 0
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, nullptr )
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, ze_device_memory_properties )
+ZE ---> zeDeviceGetImageProperties( ze_device, &ze_device_image_properties )
+ZE ---> zeDeviceGetKernelProperties( ze_device, &ze_device_kernel_properties )
+ZE ---> zeDeviceGetCacheProperties( ze_device, &ze_device_cache_properties )
+) --->        pi_result : PI_SUCCESS
+---> piDevicesGet(
+       pi_platform : 0x2487450
+       <unknown> : 4294967295
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b8cc
+) --->        pi_result : PI_SUCCESS
+---> piDevicesGet(
+       pi_platform : 0x2487450
+       <unknown> : 4294967295
+       <unknown> : 1
+       <unknown> : 0x2fa1990
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x2487450
+       <unknown> : 2306
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b828
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x2487450
+       <unknown> : 2306
+       <unknown> : 28
+       <unknown> : Àpå
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x2487450
+       <unknown> : 2305
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b828
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x2487450
+       <unknown> : 2305
+       <unknown> : 12
+       <unknown> : @rå
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2487600
+       <unknown> : 4139
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b8f8
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2487600
+       <unknown> : 4139
+       <unknown> : 30
+       <unknown> : ðpå
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2487600
+       <unknown> : 4141
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b920
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2487600
+       <unknown> : 4141
+       <unknown> : 12
+       <unknown> : @rå
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2487600
+       <unknown> : 4096
+       <unknown> : 8
+       <unknown> : 0x2e578f8
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2487600
+       <unknown> : 4162
+       <unknown> : 8
+       <unknown> : 0x7fff4a34b7d0
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2487600
+       <unknown> : 4096
+       <unknown> : 8
+       <unknown> : 0x7fff4a34b810
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDevicesGet(
+       pi_platform : 0x253b0e8
+       <unknown> : 4294967295
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b8cc
+) --->        pi_result : PI_SUCCESS
+---> piDevicesGet(
+       pi_platform : 0x253b0e8
+       <unknown> : 4294967295
+       <unknown> : 1
+       <unknown> : 0x2fa1990
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x253b0e8
+       <unknown> : 2306
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b828
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x253b0e8
+       <unknown> : 2306
+       <unknown> : 16
+       <unknown> : yå
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x253b0e8
+       <unknown> : 2305
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b828
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x253b0e8
+       <unknown> : 2305
+       <unknown> : 17
+       <unknown> : yå
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2571c28
+       <unknown> : 4139
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b8f8
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2571c28
+       <unknown> : 4139
+       <unknown> : 42
+       <unknown> : ¨9Çü~
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2571c28
+       <unknown> : 4141
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b920
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2571c28
+       <unknown> : 4141
+       <unknown> : 15
+       <unknown> : Ðvå
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2571c28
+       <unknown> : 4096
+       <unknown> : 8
+       <unknown> : 0x2e576b8
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2571c28
+       <unknown> : 4162
+       <unknown> : 8
+       <unknown> : 0x7fff4a34b7d0
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2571c28
+       <unknown> : 4096
+       <unknown> : 8
+       <unknown> : 0x7fff4a34b810
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDevicesGet(
+       pi_platform : 0x7efcc41da0c8
+       <unknown> : 4294967295
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b8cc
+ZE ---> zeDriverGet(&ze_driver_count, nullptr)
+ZE ---> zeDriverGet(&ze_driver_count, &ze_driver)
+ZE ---> zeDeviceGet(ze_driver, &ze_device_count, nullptr)
+ZE ---> zeDeviceGet(ze_driver, &ze_device_count, ze_devices)
+) --->        pi_result : PI_SUCCESS
+---> piDevicesGet(
+       pi_platform : 0x7efcc41da0c8
+       <unknown> : 4294967295
+       <unknown> : 1
+       <unknown> : 0x2e558e0
+       <unknown> : 0
+ZE ---> zeDriverGet(&ze_driver_count, nullptr)
+ZE ---> zeDriverGet(&ze_driver_count, &ze_driver)
+ZE ---> zeDeviceGet(ze_driver, &ze_device_count, nullptr)
+ZE ---> zeDeviceGet(ze_driver, &ze_device_count, ze_devices)
+ZE ---> zeCommandListCreateImmediate(ze_device, &ze_command_queue_desc, &L0PiDevice->L0CommandListInit)
+ZE ---> zeDeviceGetProperties( ze_device, &L0PiDevice->L0DeviceProperties)
+ZE ---> zeDeviceGetComputeProperties( ze_device, &L0PiDevice->L0DeviceComputeProperties)
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x7efcc41da0c8
+       <unknown> : 2306
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b828
+ZE ---> zeDriverGetProperties(ze_driver_global, &ze_driver_properties)
+==========================
+SYCL over Level-Zero 0.8
+==========================
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x7efcc41da0c8
+       <unknown> : 2306
+       <unknown> : 26
+       <unknown> : 
+       <unknown> : 0
+ZE ---> zeDriverGetProperties(ze_driver_global, &ze_driver_properties)
+==========================
+SYCL over Level-Zero 0.8
+==========================
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x7efcc41da0c8
+       <unknown> : 2305
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b828
+ZE ---> zeDriverGetProperties(ze_driver_global, &ze_driver_properties)
+==========================
+SYCL over Level-Zero 0.8
+==========================
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x7efcc41da0c8
+       <unknown> : 2305
+       <unknown> : 15
+       <unknown> : 
+       <unknown> : 0
+ZE ---> zeDriverGetProperties(ze_driver_global, &ze_driver_properties)
+==========================
+SYCL over Level-Zero 0.8
+==========================
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2e57200
+       <unknown> : 4139
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b8f8
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, nullptr )
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, ze_device_memory_properties )
+ZE ---> zeDeviceGetImageProperties( ze_device, &ze_device_image_properties )
+ZE ---> zeDeviceGetKernelProperties( ze_device, &ze_device_kernel_properties )
+ZE ---> zeDeviceGetCacheProperties( ze_device, &ze_device_cache_properties )
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2e57200
+       <unknown> : 4139
+       <unknown> : 14
+       <unknown> : 
+       <unknown> : 0
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, nullptr )
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, ze_device_memory_properties )
+ZE ---> zeDeviceGetImageProperties( ze_device, &ze_device_image_properties )
+ZE ---> zeDeviceGetKernelProperties( ze_device, &ze_device_kernel_properties )
+ZE ---> zeDeviceGetCacheProperties( ze_device, &ze_device_cache_properties )
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2e57200
+       <unknown> : 4141
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b920
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, nullptr )
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, ze_device_memory_properties )
+ZE ---> zeDeviceGetImageProperties( ze_device, &ze_device_image_properties )
+ZE ---> zeDeviceGetKernelProperties( ze_device, &ze_device_kernel_properties )
+ZE ---> zeDeviceGetCacheProperties( ze_device, &ze_device_cache_properties )
+ZE ---> zeDriverGetProperties(ze_driver_global, &ze_driver_properties)
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2e57200
+       <unknown> : 4141
+       <unknown> : 4
+       <unknown> : Ø7Çü~
+       <unknown> : 0
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, nullptr )
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, ze_device_memory_properties )
+ZE ---> zeDeviceGetImageProperties( ze_device, &ze_device_image_properties )
+ZE ---> zeDeviceGetKernelProperties( ze_device, &ze_device_kernel_properties )
+ZE ---> zeDeviceGetCacheProperties( ze_device, &ze_device_cache_properties )
+ZE ---> zeDriverGetProperties(ze_driver_global, &ze_driver_properties)
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2e57200
+       <unknown> : 4096
+       <unknown> : 8
+       <unknown> : 0x2e57638
+       <unknown> : 0
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, nullptr )
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, ze_device_memory_properties )
+ZE ---> zeDeviceGetImageProperties( ze_device, &ze_device_image_properties )
+ZE ---> zeDeviceGetKernelProperties( ze_device, &ze_device_kernel_properties )
+ZE ---> zeDeviceGetCacheProperties( ze_device, &ze_device_cache_properties )
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2e57200
+       <unknown> : 4162
+       <unknown> : 8
+       <unknown> : 0x7fff4a34b7d0
+       <unknown> : 0
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, nullptr )
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, ze_device_memory_properties )
+ZE ---> zeDeviceGetImageProperties( ze_device, &ze_device_image_properties )
+ZE ---> zeDeviceGetKernelProperties( ze_device, &ze_device_kernel_properties )
+ZE ---> zeDeviceGetCacheProperties( ze_device, &ze_device_cache_properties )
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2e57200
+       <unknown> : 4096
+       <unknown> : 8
+       <unknown> : 0x7fff4a34b810
+       <unknown> : 0
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, nullptr )
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, ze_device_memory_properties )
+ZE ---> zeDeviceGetImageProperties( ze_device, &ze_device_image_properties )
+ZE ---> zeDeviceGetKernelProperties( ze_device, &ze_device_kernel_properties )
+ZE ---> zeDeviceGetCacheProperties( ze_device, &ze_device_cache_properties )
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2487600
+       <unknown> : 4096
+       <unknown> : 8
+       <unknown> : 0x7fff4a34b9b0
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2571c28
+       <unknown> : 4096
+       <unknown> : 8
+       <unknown> : 0x7fff4a34b9b0
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2487600
+       <unknown> : 4096
+       <unknown> : 8
+       <unknown> : 0x7fff4a34b9b0
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2571c28
+       <unknown> : 4096
+       <unknown> : 8
+       <unknown> : 0x7fff4a34b9b0
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2e57200
+       <unknown> : 4096
+       <unknown> : 8
+       <unknown> : 0x7fff4a34b9b0
+       <unknown> : 0
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, nullptr )
+ZE ---> zeDeviceGetMemoryProperties( ze_device, &ze_avail_mem_count, ze_device_memory_properties )
+ZE ---> zeDeviceGetImageProperties( ze_device, &ze_device_image_properties )
+ZE ---> zeDeviceGetKernelProperties( ze_device, &ze_device_kernel_properties )
+ZE ---> zeDeviceGetCacheProperties( ze_device, &ze_device_cache_properties )
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2487600
+       <unknown> : 4145
+       <unknown> : 8
+       <unknown> : 0x7fff4a34b9e8
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x2487450
+       <unknown> : 2305
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b9f8
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x2487450
+       <unknown> : 2305
+       <unknown> : 12
+       <unknown> : Pvå
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x2487450
+       <unknown> : 2306
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b920
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x2487450
+       <unknown> : 2306
+       <unknown> : 28
+       <unknown> : 0Šå
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piContextCreate(
+       <unknown> : 0
+       <unknown> : 1
+       <unknown> : 0x2e58a10
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x2e58878
+) --->        pi_result : PI_SUCCESS
+---> piQueueCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 0x2487600
+       <unknown> : 1
+       <unknown> : 0x7fff4a34ba08
+) --->        pi_result : PI_SUCCESS
+frame progress: ---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 1
+       <unknown> : 1952256
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piEnqueueMemBufferWrite(
+       <unknown> : 0x29ddcd0
+       pi_mem : 0x2efecf0
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 1952256
+       <unknown> : 
+       <unknown> : 0
+       pi_event * : 0
+       pi_event * : 0x2e57080[ 0 ... ]
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 9
+       <unknown> : 388
+       <unknown> : 0x7fff4a34c2d0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 9
+       <unknown> : 80
+       <unknown> : 0x22672e0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 9
+       <unknown> : 80
+       <unknown> : 0x2267340
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 9
+       <unknown> : 8320
+       <unknown> : 0x2268830
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 9
+       <unknown> : 8320
+       <unknown> : 0x226a8c0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 9
+       <unknown> : 124
+       <unknown> : 0x22673a0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 9
+       <unknown> : 124
+       <unknown> : 0x2267430
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 9
+       <unknown> : 12896
+       <unknown> : 0x226c950
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 9
+       <unknown> : 12896
+       <unknown> : 0x226fbc0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 1
+       <unknown> : 208080
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 1
+       <unknown> : 322524
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 1
+       <unknown> : 1338444
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 1
+       <unknown> : 3500844
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 1
+       <unknown> : 6831756
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 1
+       <unknown> : 4890492
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 1
+       <unknown> : 4890492
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 1
+       <unknown> : 3500844
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 1
+       <unknown> : 3500844
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 1
+       <unknown> : 1338444
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 1
+       <unknown> : 3500844
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 1
+       <unknown> : 530604
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 1
+       <unknown> : 3500844
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 1
+       <unknown> : 3500844
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 1
+       <unknown> : 530604
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 1
+       <unknown> : 10404
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 1
+       <unknown> : 10404
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 1
+       <unknown> : 26724
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 1
+       <unknown> : 26724
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 1
+       <unknown> : 204
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 1
+       <unknown> : 204
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piMemBufferCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : 1
+       <unknown> : 204
+       <unknown> : 0
+       <unknown> : 0x7fff4a34b338
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2487600
+       <unknown> : 4136
+       <unknown> : 4
+       <unknown> : 0x7fff4a34ad0c
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x2487450
+       <unknown> : 2305
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34acc8
+) --->        pi_result : PI_SUCCESS
+---> piPlatformGetInfo(
+       pi_platform : 0x2487450
+       <unknown> : 2305
+       <unknown> : 12
+       <unknown> : 
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piProgramCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : #
+       <unknown> : 174392
+       <unknown> : 0x7fff4a34acc8
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2487600
+       <unknown> : 4144
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34aa38
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2487600
+       <unknown> : 4144
+       <unknown> : 1022
+       <unknown> : 
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2487600
+       <unknown> : 4144
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34aa38
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2487600
+       <unknown> : 4144
+       <unknown> : 1022
+       <unknown> : ¸7Çü~
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piProgramCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : #
+       <unknown> : 2212
+       <unknown> : 0x7fff4a34aa18
+) --->        pi_result : PI_SUCCESS
+---> piProgramCompile(
+       <unknown> : 0x2e181d0
+       <unknown> : 1
+       <unknown> : 0x2bad8d0
+       <unknown> : 
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piProgramCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : #
+       <unknown> : 9820
+       <unknown> : 0x7fff4a34aa18
+) --->        pi_result : PI_SUCCESS
+---> piProgramCompile(
+       <unknown> : 0x6f7b710
+       <unknown> : 1
+       <unknown> : 0x2bad8d0
+       <unknown> : 
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piProgramCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : #
+       <unknown> : 9460
+       <unknown> : 0x7fff4a34aa18
+) --->        pi_result : PI_SUCCESS
+---> piProgramCompile(
+       <unknown> : 0x6f7c750
+       <unknown> : 1
+       <unknown> : 0x2bad8d0
+       <unknown> : 
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piProgramCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : #
+       <unknown> : 80676
+       <unknown> : 0x7fff4a34aa18
+) --->        pi_result : PI_SUCCESS
+---> piProgramCompile(
+       <unknown> : 0x6f7f040
+       <unknown> : 1
+       <unknown> : 0x2bad8d0
+       <unknown> : 
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piProgramCreate(
+       <unknown> : 0x2e555f0
+       <unknown> : #
+       <unknown> : 80752
+       <unknown> : 0x7fff4a34aa18
+) --->        pi_result : PI_SUCCESS
+---> piProgramCompile(
+       <unknown> : 0x6f7f3e0
+       <unknown> : 1
+       <unknown> : 0x2bad8d0
+       <unknown> : 
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piProgramCompile(
+       <unknown> : 0x2ded4a0
+       <unknown> : 1
+       <unknown> : 0x2bad8d0
+       <unknown> : 
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piProgramLink(
+       <unknown> : 0x2e555f0
+       <unknown> : 1
+       <unknown> : 0x2bad8d0
+       <unknown> : 
+       <unknown> : 6
+       <unknown> : 0x6f7f2a0
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34ab60
+) --->        pi_result : -17
+---> piProgramGetInfo(
+       <unknown> : 0x6f7b9d0
+       <unknown> : 4451
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34a990
+) --->        pi_result : PI_SUCCESS
+---> piProgramGetInfo(
+       <unknown> : 0x6f7b9d0
+       <unknown> : 4451
+       <unknown> : 8
+       <unknown> : 0x29c1b80
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piProgramGetBuildInfo(
+       <unknown> : 0x6f7b9d0
+       <unknown> : 0x2487600
+       <unknown> : 4483
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34a990
+) --->        pi_result : PI_SUCCESS
+---> piProgramGetBuildInfo(
+       <unknown> : 0x6f7b9d0
+       <unknown> : 0x2487600
+       <unknown> : 4483
+       <unknown> : 133
+       <unknown> : 
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2487600
+       <unknown> : 4139
+       <unknown> : 0
+       <unknown> : 0
+       <unknown> : 0x7fff4a34a990
+) --->        pi_result : PI_SUCCESS
+---> piDeviceGetInfo(
+       <unknown> : 0x2487600
+       <unknown> : 4139
+       <unknown> : 30
+       <unknown> : 
+       <unknown> : 0
+) --->        pi_result : PI_SUCCESS
+terminate called after throwing an instance of 'cl::sycl::compile_program_error'
+  what():  The program was built for 1 devices
+Build program log for 'Intel(R) Gen9 HD Graphics NEO':
+
+error: Total size of kernel arguments exceeds limit! Total arguments size: 1028, limit: 1024
+error: backend compiler failed build.
+ -17 (CL_LINK_PROGRAM_FAILURE)
