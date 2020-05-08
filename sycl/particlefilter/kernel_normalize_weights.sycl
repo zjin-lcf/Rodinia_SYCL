@@ -1,0 +1,32 @@
+            int local_id = item.get_local_linear_id();
+            int i = item.get_global_linear_id();
+	if(0 == local_id)
+		sumWeights[0] = partial_sums[0];
+        item.barrier(access::fence_space::local_space);
+	if(i < Nparticles) {
+		weights[i] = weights[i]/sumWeights[0];
+	}
+        item.barrier(access::fence_space::global_space);
+	if(i == 0) {
+	CDF[0] = weights[0];
+	for(int x = 1; x < Nparticles; x++){
+		CDF[x] = weights[x] + CDF[x-1];
+	}
+
+	seed[i] = (A*seed[i] + C) % M;
+	float p = cl::sycl::fabs(seed[i]/((float)M));
+	seed[i] = (A*seed[i] + C) % M;
+	float q = cl::sycl::fabs(seed[i]/((float)M));
+	u[0] = (1/((float)(Nparticles))) * 
+	       (cl::sycl::sqrt(-2*cl::sycl::log(p))*cl::sycl::cos(2*PI*q));
+// do this to allow all threads in all blocks to use the same u1
+	}
+        item.barrier(access::fence_space::global_space);
+	if(0 == local_id)
+		u1[0] = u[0];
+
+        item.barrier(access::fence_space::local_space);
+	if(i < Nparticles)
+	{
+		u[i] = u1[0] + i/((float)(Nparticles));
+	}

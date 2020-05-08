@@ -1,0 +1,23 @@
+
+            int i = item.get_global_linear_id();
+	if(i < Nparticles){
+			int index = -1;
+			int x;
+
+			for(x = 0; x < Nparticles; x++){
+				if(CDF[x] >= u[i]){
+					index = x;
+					break;
+				}
+			}
+			if(index == -1){
+				index = Nparticles-1;
+			}
+
+			xj[i] = arrayX[index];
+			yj[i] = arrayY[index];
+
+			//weights[i] = 1 / ((float) (Nparticles)); //moved this code to the beginning of likelihood kernel
+
+		}
+        item.barrier(access::fence_space::global_space);

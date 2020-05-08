@@ -1,0 +1,12 @@
+Heart Wall
+
+cd sycl/heartwall
+make 
+./run
+
+
+Particile Filter
+
+cd sycl/particlefilter
+make 
+./run
