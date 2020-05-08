@@ -1,0 +1,18 @@
+int by = item.get_group(1);
+int tx = item.get_local_id(0);
+int ty = item.get_local_id(1);
+
+int index =  ( hid + 1 ) * HEIGHT * by + ( hid + 1 ) * ty + tx + 1 + ( hid + 1 ) ;  
+int index_y = HEIGHT * by + ty + 1;
+int index_x = tx + 1;
+
+w_acc[index] += ((ETA * delta_acc[index_x] * ly_acc[index_y]) + (MOMENTUM * oldw_acc[index]));
+oldw_acc[index] = ((ETA * delta_acc[index_x] * ly_acc[index_y]) + (MOMENTUM * oldw_acc[index]));
+
+item.barrier(access::fence_space::local_space);
+
+if (ty == 0 && by ==0){
+  w_acc[index_x] += ((ETA * delta_acc[index_x]) + (MOMENTUM * oldw_acc[index_x]));
+  oldw_acc[index_x] = ((ETA * delta_acc[index_x]) + (MOMENTUM * oldw_acc[index_x]));
+}
+
