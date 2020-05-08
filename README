@@ -2,11 +2,11 @@ Heart Wall
 
 cd sycl/heartwall
 make 
-./run
+make run
 
 
 Particile Filter
 
 cd sycl/particlefilter
 make 
-./run
+make run
