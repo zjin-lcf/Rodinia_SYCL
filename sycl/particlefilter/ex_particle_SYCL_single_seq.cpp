@@ -622,10 +622,6 @@ int particleFilter(unsigned char * I, int IszX, int IszY, int Nfr, int * seed, i
     fprintf(fid, "XE: %lf\n", xe);
     fprintf(fid, "YE: %lf\n", ye);
     fprintf(fid, "distance: %lf\n", distance);
-    for (x = 0; x < 16; x++) 
-      fprintf(fid, "particle %d: %lf %lf\n", x, xj[x], yj[x]);
-    for (x = Nparticles-16; x < Nparticles; x++)
-      fprintf(fid, "particle %d: %lf %lf\n", x, xj[x], yj[x]);
     fclose(fid);
 
     //free regular memory
