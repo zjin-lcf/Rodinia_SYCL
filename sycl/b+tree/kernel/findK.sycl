@@ -1,0 +1,37 @@
+
+//========================================================================================================================================================================================================200
+//	findK function
+//========================================================================================================================================================================================================200
+
+
+	// private thread IDs
+	int thid = item.get_local_id(0);
+	int bid = item.get_group(0);
+
+	// processtree levels
+	int i;
+	for(i = 0; i < maxheight; i++){
+
+		// if value is between the two keys
+		if((knodesD_acc[currKnodeD_acc[bid]].keys[thid]) <= keysD_acc[bid] && (knodesD_acc[currKnodeD_acc[bid]].keys[thid+1] > keysD_acc[bid])){
+			// this conditional statement is inserted to avoid crush due to but in original code
+			// "offset[bid]" calculated below that addresses knodes[] in the next iteration goes outside of its bounds cause segmentation fault
+			// more specifically, values saved into knodes->indices in the main function are out of bounds of knodes that they address
+			if(knodesD_acc[offsetD_acc[bid]].indices[thid] < knodes_elem){
+				offsetD_acc[bid] = knodesD_acc[offsetD_acc[bid]].indices[thid];
+			}
+		}
+		item.barrier(access::fence_space::local_space);
+		// set for next tree level
+		if(thid==0){
+			currKnodeD_acc[bid] = offsetD_acc[bid];
+		}
+		item.barrier(access::fence_space::local_space);
+
+	}
+
+	//At this point, we have a candidate leaf node which may contain
+	//the target record.  Check each key to hopefully find the record
+	if(knodesD_acc[currKnodeD_acc[bid]].keys[thid] == keysD_acc[bid]){
+		ansD_acc[bid].value = recordsD_acc[knodesD_acc[currKnodeD_acc[bid]].indices[thid]].value;
+	}

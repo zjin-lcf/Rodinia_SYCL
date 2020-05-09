@@ -1,0 +1,48 @@
+//========================================================================================================================================================================================================200
+//	findRangeK function
+//========================================================================================================================================================================================================200
+
+
+	// private thread IDs
+	int thid = item.get_local_id(0);
+	int bid = item.get_group(0);
+
+	int i;
+	for(i = 0; i < maxheight; i++){
+
+		if((knodesD_acc[currKnodeD_acc[bid]].keys[thid] <= startD_acc[bid]) && (knodesD_acc[currKnodeD_acc[bid]].keys[thid+1] > startD_acc[bid])){
+			// this conditional statement is inserted to avoid crush due to but in original code
+			// "offset[bid]" calculated below that later addresses part of knodes goes outside of its bounds cause segmentation fault
+			// more specifically, values saved into knodes->indices in the main function are out of bounds of knodes that they address
+			if(knodesD_acc[currKnodeD_acc[bid]].indices[thid] < knodes_elem) {
+				offsetD_acc[bid] = knodesD_acc[currKnodeD_acc[bid]].indices[thid];
+			}
+		}
+		if((knodesD_acc[lastKnodeD_acc[bid]].keys[thid] <= endD_acc[bid]) && (knodesD_acc[lastKnodeD_acc[bid]].keys[thid+1] > endD_acc[bid])){
+			// this conditional statement is inserted to avoid crush due to but in original code
+			// "offset_2[bid]" calculated below that later addresses part of knodes goes outside of its bounds cause segmentation fault
+			// more specifically, values saved into knodes->indices in the main function are out of bounds of knodes that they address
+			if(knodesD_acc[lastKnodeD_acc[bid]].indices[thid] < knodes_elem) {
+				offset_2D_acc[bid] = knodesD_acc[lastKnodeD_acc[bid]].indices[thid];
+			}
+		}
+		item.barrier(access::fence_space::local_space);
+		// set for next tree level
+		if(thid==0){
+			currKnodeD_acc[bid] = offsetD_acc[bid];
+			lastKnodeD_acc[bid] = offset_2D_acc[bid];
+		}
+		item.barrier(access::fence_space::local_space);
+	}
+
+	// Find the index of the starting record
+	if(knodesD_acc[currKnodeD_acc[bid]].keys[thid] == startD_acc[bid]){
+		RecstartD_acc[bid] = knodesD_acc[currKnodeD_acc[bid]].indices[thid];
+	}
+	item.barrier(access::fence_space::local_space);
+
+	// Find the index of the ending record
+	if(knodesD_acc[lastKnodeD_acc[bid]].keys[thid] == endD_acc[bid]){
+		ReclenD_acc[bid] = knodesD_acc[lastKnodeD_acc[bid]].indices[thid] - RecstartD_acc[bid]+1;
+	}
+
