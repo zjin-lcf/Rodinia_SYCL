@@ -1,0 +1,5 @@
+	const int i = item.get_global_id(0);
+	if( i >= nelr) return;
+	for(int j = 0; j < NVAR; j++)
+		variables_acc[i + j*nelr] = ff_variable_acc[j];
+

@@ -1,0 +1,4 @@
+	const int thread_id = item.get_global_id(0);
+	if( thread_id >= ct_acc[]) return;
+	mem_d_acc[thread_id] = val_acc[];
+

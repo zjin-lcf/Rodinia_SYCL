@@ -1,0 +1,11 @@
+	const int i = item.get_global_id(0);
+	if( i >= nelr) return;
+
+	float factor = step_factors_acc[i]/(float)(RK+1-j);
+
+	variables_acc[i + VAR_DENSITY*nelr] = old_variables_acc[i + VAR_DENSITY*nelr] + factor*fluxes_acc[i + VAR_DENSITY*nelr];
+	variables_acc[i + VAR_DENSITY_ENERGY*nelr] = old_variables_acc[i + VAR_DENSITY_ENERGY*nelr] + factor*fluxes_acc[i + VAR_DENSITY_ENERGY*nelr];
+	variables_acc[i + (VAR_MOMENTUM+0)*nelr] = old_variables_acc[i + (VAR_MOMENTUM+0)*nelr] + factor*fluxes_acc[i + (VAR_MOMENTUM+0)*nelr];
+	variables_acc[i + (VAR_MOMENTUM+1)*nelr] = old_variables_acc[i + (VAR_MOMENTUM+1)*nelr] + factor*fluxes_acc[i + (VAR_MOMENTUM+1)*nelr];	
+	variables_acc[i + (VAR_MOMENTUM+2)*nelr] = old_variables_acc[i + (VAR_MOMENTUM+2)*nelr] + factor*fluxes_acc[i + (VAR_MOMENTUM+2)*nelr];	
+	
