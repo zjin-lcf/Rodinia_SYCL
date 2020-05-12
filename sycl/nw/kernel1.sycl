@@ -1,0 +1,75 @@
+	// Block index
+  int bx = item.get_group(0);	
+  
+  // Thread index
+  int tx = item.get_local_id(0);
+  
+  // Base elements
+  int base = offset_r * max_cols + offset_c;
+  
+  int b_index_x = bx;
+	int b_index_y = blk - 1 - bx;
+	
+	
+	int index   =   base + max_cols * BLOCK_SIZE * b_index_y + BLOCK_SIZE * b_index_x + tx + ( max_cols + 1 );
+	int index_n   = base + max_cols * BLOCK_SIZE * b_index_y + BLOCK_SIZE * b_index_x + tx + ( 1 );
+	int index_w   = base + max_cols * BLOCK_SIZE * b_index_y + BLOCK_SIZE * b_index_x + ( max_cols );
+	int index_nw =  base + max_cols * BLOCK_SIZE * b_index_y + BLOCK_SIZE * b_index_x;
+   
+    
+	if (tx == 0){
+		SCORE(tx, 0) = d_input_itemsets_acc[index_nw + tx];
+	}
+
+	item.barrier(access::fence_space::local_space);
+
+	for ( int ty = 0 ; ty < BLOCK_SIZE ; ty++)
+		REF(ty, tx) =  d_reference_acc[index + max_cols * ty];
+
+	item.barrier(access::fence_space::local_space);
+
+	SCORE((tx + 1), 0) = d_input_itemsets_acc[index_w + max_cols * tx];
+
+	item.barrier(access::fence_space::local_space);
+
+	SCORE(0, (tx + 1)) = d_input_itemsets_acc[index_n];
+  
+	item.barrier(access::fence_space::local_space);
+	
+	
+	for( int m = 0 ; m < BLOCK_SIZE ; m++){
+	
+	  if ( tx <= m ){
+	  
+		  int t_index_x =  tx + 1;
+		  int t_index_y =  m - tx + 1;
+			
+		  SCORE(t_index_y, t_index_x) = maximum( SCORE((t_index_y-1), (t_index_x-1)) + REF((t_index_y-1), (t_index_x-1)),
+		                                         SCORE((t_index_y),   (t_index_x-1)) - (penalty), 
+												 SCORE((t_index_y-1), (t_index_x))   - (penalty));
+	  }
+	  item.barrier(access::fence_space::local_space);
+    }
+    
+     item.barrier(access::fence_space::local_space);
+    
+	for( int m = BLOCK_SIZE - 2 ; m >=0 ; m--){
+   
+	  if ( tx <= m){
+ 
+		  int t_index_x =  tx + BLOCK_SIZE - m ;
+		  int t_index_y =  BLOCK_SIZE - tx;
+
+         SCORE(t_index_y, t_index_x) = maximum(  SCORE((t_index_y-1), (t_index_x-1)) + REF((t_index_y-1), (t_index_x-1)),
+		                                         SCORE((t_index_y),   (t_index_x-1)) - (penalty), 
+		 										 SCORE((t_index_y-1), (t_index_x))   - (penalty));
+	   
+	  }
+
+	  item.barrier(access::fence_space::local_space);
+	}
+	
+
+   for ( int ty = 0 ; ty < BLOCK_SIZE ; ty++)
+     d_input_itemsets_acc[index + max_cols * ty] = SCORE((ty+1), (tx+1));
+
