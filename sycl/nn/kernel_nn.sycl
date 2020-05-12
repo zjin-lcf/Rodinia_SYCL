@@ -1,0 +1,8 @@
+int globalId = item.get_global_id(0);
+
+if (globalId < numRecords) {
+  LatLong latLong = d_locations_acc[globalId];
+  d_distances_acc[globalId] = (float)cl::sycl::sqrt((lat-latLong.lat)*(lat-latLong.lat)+
+      (lng-latLong.lng)*(lng-latLong.lng));
+}
+
