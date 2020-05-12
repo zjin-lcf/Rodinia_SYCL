@@ -1,0 +1,55 @@
+
+
+/*#define Elements
+__kernel void memset_kernel(__global char * mem_d, short val, int number_bytes){
+	const int thread_id = get_global_id(0);
+	mem_d[thread_id] = val;
+}
+//--9 parameters
+__kernel void pgain_kernel(
+			 __global Point_Struct *p,			 
+			 __global float *coord_d_acc,
+			 __global float * work_mem_d_acc,			
+			 __global int *center_table_d_acc,
+			 __global char *switch_membership_d_acc,			
+			 __local float *coord_s_acc,
+			 int num,
+			 int dim,
+			 long x,
+			 int K){	
+*/
+	/* block ID and global thread ID */
+	const int thread_id = item.get_global_id(0);
+	const int local_id = item.get_local_id(0);
+	
+	if(thread_id<num){
+	  // coordinate mapping of point[x] to shared mem
+	  if(local_id == 0)
+	   	for(int i=0; i<dim; i++){ 
+	   		coord_s_acc[i] = coord_d_acc[i*num + x];
+	   	}
+	  item.barrier(access::fence_space::local_space);
+	
+	  // cost between this point and point[x]: euclidean distance multiplied by weight
+	  float x_cost = 0.0;
+	  for(int i=0; i<dim; i++)
+		  x_cost += (coord_d_acc[(i*num)+thread_id]-coord_s_acc[i]) * (coord_d_acc[(i*num)+thread_id]-coord_s_acc[i]);
+	  x_cost = x_cost * p_d_acc[thread_id].weight;
+	
+	  float current_cost = p_d_acc[thread_id].cost;
+
+	  int base = thread_id*(K+1);	 
+	  // if computed cost is less then original (it saves), mark it as to reassign	  
+	  if ( x_cost < current_cost ){
+		  switch_membership_d_acc[thread_id] = '1';
+	      int addr_1 = base + K;
+	      work_mem_d_acc[addr_1] = x_cost - current_cost;
+	  }
+	  // if computed cost is larger, save the difference
+	  else {
+	      int assign = p_d_acc[thread_id].assign;
+	      int addr_2 = base + center_table_d_acc[assign];
+	      work_mem_d_acc[addr_2] += current_cost - x_cost;
+	  }
+	}
+

@@ -1,0 +1,35 @@
+Notes
+
+Use the C++17 std::optional for the case that a set of empty SYCL buffers are declared in the C/C++ global space and then they are allocated once when the pgain function is called for the first time. 
+Alternatively, they can be allocated whenever the pgain function is called. It may be inefficient in terms of performance.
+
+Profiling is not enabled by default in the SYCL version because task synchronization can be managed by the SYCL runtime
+
+Compiler warnings with -Wall are removed  
+
+=========================================================================================================================================== 
+Written by Nevin Liber 
+
+A SYCL buffer is typed memory, and as such takes template parameters, the first of which is the type.  Also, there are no allocate() or resize() methods, although you could accomplish this by assigning a new buffer over the old one.
+
+If it isn’t clear from the discussion in issue 277, making buffer default constructible adds an “empty” state to buffer which doesn’t exist right now.  This makes it harder to reason about using buffer.  It also complicates every use of buffer, both in SYCL implementations and user code, because each use has to either handle it or forbid it (adding a precondition on using a buffer).  Of course, SYCL can change its implementation.
+
+The alternative is to use std::optional<cl::sycl::buffer<T>>.  To set it, assignment will work, as in:
+ 
+
+std::optional<cl::sycl::buffer<T>> a;
+a = cl::sycl::buffer<T>(…).
+
+Now, to get to the buffer, you’d need to write:
+a.value() 
+
+or
+
+*a
+
+And the burden is on you to make sure that a is not disengaged (empty) whenever it is used, either by testing it or reasoning it out.
+
+You can find a description of optional at https://en.cppreference.com/w/cpp/utility/optional.
+
+=========================================================================================================================================== 
+
