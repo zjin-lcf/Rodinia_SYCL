@@ -1,0 +1,41 @@
+  float amb_temp = 80.0;
+
+  int i = item.get_global_id(0);
+  int j = item.get_global_id(1);
+  int c = i + j * numCols;
+  int xy = numCols * numRows;
+
+  int W = (i == 0)        ? c : c - 1;
+  int E = (i == numCols-1)     ? c : c + 1;
+  int N = (j == 0)        ? c : c - numCols;
+  int S = (j == numRows-1)     ? c : c + numCols;
+
+  float temp1, temp2, temp3;
+  temp1 = temp2 = tIn_acc[c];
+  temp3 = tIn_acc[c+xy];
+  tOut_acc[c] = cc * temp2 + cw * tIn_acc[W] + ce * tIn_acc[E] + cs * tIn_acc[S]
+    + cn * tIn_acc[N] + cb * temp1 + ct * temp3 + stepDivCap * p_acc[c] + ct * amb_temp;
+  c += xy;
+  W += xy;
+  E += xy;
+  N += xy;
+  S += xy;
+
+  for (int k = 1; k < layers-1; ++k) {
+      temp1 = temp2;
+      temp2 = temp3;
+      temp3 = tIn_acc[c+xy];
+      tOut_acc[c] = cc * temp2 + cw * tIn_acc[W] + ce * tIn_acc[E] + cs * tIn_acc[S]
+        + cn * tIn_acc[N] + cb * temp1 + ct * temp3 + stepDivCap * p_acc[c] + ct * amb_temp;
+      c += xy;
+      W += xy;
+      E += xy;
+      N += xy;
+      S += xy;
+  }
+  temp1 = temp2;
+  temp2 = temp3;
+  tOut_acc[c] = cc * temp2 + cw * tIn_acc[W] + ce * tIn_acc[E] + cs * tIn_acc[S]
+    + cn * tIn_acc[N] + cb * temp1 + ct * temp3 + stepDivCap * p_acc[c] + ct * amb_temp;
+
+
