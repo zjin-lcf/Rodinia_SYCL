@@ -1,0 +1,39 @@
+
+uint lid = item.get_local_id(0);
+uint gid = item.get_global_id(0);
+uint lsize = item.get_local_range(0);
+uint gsize = item.get_global_range(0);
+
+const int warpBase = (lid >> BUCKET_WARP_LOG_SIZE) * DIVISIONS;
+const int numThreads = gsize;
+
+for (int i = lid; i < BUCKET_BLOCK_MEMORY; i += lsize)
+  s_offset[i].store(0); //s_offset[i] = 0;
+
+item.barrier();
+
+for (int tid = gid; tid < listsize; tid += numThreads) {
+  float elem = input_acc[tid];
+
+  int idx  = DIVISIONS/2 - 1;
+  int jump = DIVISIONS/4;
+  float piv = l_pivotpoints_acc[idx]; //s_pivotpoints[idx];
+
+  while(jump >= 1){
+    idx = (elem < piv) ? (idx - jump) : (idx + jump);
+    piv = l_pivotpoints_acc[idx]; //s_pivotpoints[idx];
+    jump /= 2;
+  }
+  idx = (elem < piv) ? idx : (idx + 1);
+
+  indice_acc[tid] = 
+    (atomic_fetch_add(s_offset[warpBase+idx], 1U) << LOG_DIVISIONS)  + idx;
+}
+
+item.barrier();
+
+int prefixBase = item.get_group(0) * BUCKET_BLOCK_MEMORY;
+
+for (int i = lid; i < BUCKET_BLOCK_MEMORY; i += lsize)
+  d_prefixoffsets_acc[prefixBase + i] = atomic_load(s_offset[i]) & 0x07FFFFFFU;
+

@@ -1,0 +1,12 @@
+	int tid = item.get_global_id(0);
+	int size = blocks * BUCKET_BLOCK_MEMORY;
+	int sum = 0;
+    
+	for (int i = tid; i < size; i += DIVISIONS) {
+		int x = d_prefixoffsets_acc[i];
+		d_prefixoffsets_acc[i] = sum;
+		sum += x;
+	}
+    
+	d_offsets_acc[tid] = sum;
+

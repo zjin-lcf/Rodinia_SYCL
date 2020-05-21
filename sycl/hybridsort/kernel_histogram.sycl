@@ -1,0 +1,38 @@
+////////////////////////////////////////////////////////////////////////////////
+// Main computation pass: compute per-workgroup partial histograms
+////////////////////////////////////////////////////////////////////////////////
+
+const int gid = item.get_global_id(0);
+const int lid = item.get_local_id(0);
+const int gsize = item.get_global_range(0);
+const int lsize = item.get_local_range(0);
+
+//Per-warp substorage storage
+int mulBase = (lid >> BUCKET_WARP_LOG_SIZE);
+const int warpBase = IMUL(mulBase, HISTOGRAM_BIN_COUNT);
+
+//Clear shared memory storage for current threadblock before processing
+for(uint i = lid; i < HISTOGRAM_BLOCK_MEMORY; i+=lsize) {
+  s_Hist[i].store(0);
+}
+
+
+//Read through the entire input buffer, build per-warp histograms
+item.barrier();
+for(int pos = gid; pos < listsize; pos += gsize) {
+  uint data4 = ((histoInput_acc[pos] - minimum)/(maximum - minimum)) * HISTOGRAM_BIN_COUNT;
+
+  atomic_fetch_add(s_Hist[warpBase+(data4 & 0x3FFU)], 1U);
+}
+
+//Per-block histogram reduction
+item.barrier();
+
+for(int pos = lid; pos < HISTOGRAM_BIN_COUNT; pos += lsize){
+  uint sum = 0;
+  for(int i = 0; i < HISTOGRAM_BLOCK_MEMORY; i+= HISTOGRAM_BIN_COUNT){ 
+    sum += atomic_load(s_Hist[pos + i]) & 0x07FFFFFFU;
+  }
+  atomic_fetch_add(histoOutput_acc[pos], sum);
+}
+

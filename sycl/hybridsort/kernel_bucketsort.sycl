@@ -1,0 +1,22 @@
+      int lid = item.get_local_id(0);
+    uint lsize = item.get_local_range(0);
+    uint grp_id = item.get_group(0);
+    uint gid = item.get_global_id(0);
+    uint gsize = item.get_global_range(0);
+ 
+	int prefixBase = grp_id * BUCKET_BLOCK_MEMORY;
+    const int warpBase = (lid >> BUCKET_WARP_LOG_SIZE) * DIVISIONS;
+    const int numThreads = gsize;
+    
+	for (int i = lid; i < BUCKET_BLOCK_MEMORY; i += lsize){
+		s_offset[i] = l_offsets_acc[i & (DIVISIONS - 1)] + d_prefixoffsets_acc[prefixBase + i];
+	}
+
+  item.barrier();
+
+	for (int tid = gid; tid < listsize; tid += numThreads){
+    float elem = input_acc[tid];
+    int id = indice_acc[tid];
+    output_acc[s_offset[warpBase + (id & (DIVISIONS - 1))] + (id >>  LOG_DIVISIONS)] = elem;
+  }
+
