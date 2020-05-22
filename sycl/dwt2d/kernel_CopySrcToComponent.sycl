@@ -1,0 +1,20 @@
+	int x = item.get_local_id(0);
+	int gX = item.get_local_range(0) * item.get_group(0);
+	
+	//__local unsigned char sData[THREADS];
+	
+	sData[ x ] = d_src_acc [gX + x];
+	
+	item.barrier(access::fence_space::local_space);
+	
+	int c;
+	
+	c = (int) (sData[x]);
+	
+	int globalOutputPosition = gX + x;
+	if (globalOutputPosition < pixels)
+	{
+	    d_c_acc[globalOutputPosition] = c - 128;
+	}
+	
+

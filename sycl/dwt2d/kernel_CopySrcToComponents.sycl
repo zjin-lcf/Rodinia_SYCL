@@ -1,0 +1,29 @@
+	int x = item.get_local_id(0);
+	int gX= item.get_local_range(0) * item.get_group(0); 
+	
+	//__local unsigned char sData[THREADS*3];
+	
+    // Copy data to shared mem by 4bytes 
+    // other checks are not necessary, since 
+    // d_src_acc buffer is aligned to sharedDataSize 
+	sData[3 * x + 0] = d_src_acc [gX * 3 + 3 * x + 0];
+	sData[3 * x + 1] = d_src_acc [gX * 3 + 3 * x + 1];
+	sData[3 * x + 2] = d_src_acc [gX * 3 + 3 * x + 2]; 
+	
+	item.barrier(access::fence_space::local_space);   
+	
+	int r, g, b;
+	int offset = x*3;
+	r = (int)(sData[offset]);
+	g = (int)(sData[offset+1]);
+	b = (int)(sData[offset+2]);
+	
+	int globalOutputPosition = gX + x;
+	if (globalOutputPosition < pixels)
+	{
+	    d_r_acc[globalOutputPosition] = r - 128;
+	    d_g_acc[globalOutputPosition] = g - 128;
+	    d_b_acc[globalOutputPosition] = b - 128;
+	}   
+
+

@@ -1,0 +1,41 @@
+//__local struct FDWT53 fdwt53;
+fdwt53_acc[0].WIN_SIZE_X = WIN_SX;
+fdwt53_acc[0].WIN_SIZE_Y = WIN_SY;
+
+//initialize
+for(int i = 0; i < sizeof(fdwt53_acc[0].buffer.data)/sizeof(int); i++){
+  fdwt53_acc[0].buffer.data[i] = 0;
+}
+
+fdwt53_acc[0].buffer.SIZE_X = fdwt53_acc[0].WIN_SIZE_X;
+fdwt53_acc[0].buffer.SIZE_Y = fdwt53_acc[0].WIN_SIZE_Y + 3;
+fdwt53_acc[0].buffer.VERTICAL_STRIDE = BOUNDARY_X + (fdwt53_acc[0].buffer.SIZE_X / 2);//BOUNDARY = 2  
+fdwt53_acc[0].buffer.SHM_BANKS = 16;  // SHM_BANKS = ((__CUDA_ARCH__ >= 200) ? 32 : 16)
+fdwt53_acc[0].buffer.BUFFER_SIZE = fdwt53_acc[0].buffer.VERTICAL_STRIDE * fdwt53_acc[0].buffer.SIZE_Y;
+fdwt53_acc[0].buffer.PADDING = fdwt53_acc[0].buffer.SHM_BANKS - ((fdwt53_acc[0].buffer.BUFFER_SIZE + fdwt53_acc[0].buffer.SHM_BANKS / 2) % fdwt53_acc[0].buffer.SHM_BANKS) ;
+fdwt53_acc[0].buffer.ODD_OFFSET = fdwt53_acc[0].buffer.BUFFER_SIZE + fdwt53_acc[0].buffer.PADDING ;
+fdwt53_acc[0].STRIDE = fdwt53_acc[0].buffer.VERTICAL_STRIDE ; 
+
+const int maxX = (item.get_group(0) + 1) * WIN_SX + 1;
+const int maxY = (item.get_group(1) + 1) * WIN_SY * steps + 1;
+const bool atRightBoudary = maxX >= sx;
+const bool atBottomBoudary = maxY >= sy;
+
+// Select specialized version of code according to distance of this
+// threadblock's pixels from image boundary.
+if(atBottomBoudary)
+{
+  // near bottom boundary => check both writing and reading
+  transform(item, fdwt53_acc, true, true, in_acc, out_acc, sx, sy, steps);
+}
+else if(atRightBoudary)
+{
+  // near right boundary only => check writing only
+  transform(item, fdwt53_acc, false, true, in_acc, out_acc, sx, sy, steps);
+}
+else 
+{
+  // no nearby boundary => check nothing
+  transform(item, fdwt53_acc, false, false, in_acc, out_acc, sx, sy, steps);
+}
+
