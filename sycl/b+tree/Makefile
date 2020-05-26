@@ -61,7 +61,6 @@ b+tree.out:	./main.o \
 # ======================================================================================================================================================150
 
 main.o:	./common.h \
-	./main.h \
 	./main.c
 	$(CC) $(CFLAGS) $(KERNEL_DIM) ./main.c \
 		-c \
@@ -74,7 +73,7 @@ main.o:	./common.h \
 ./kernel/kernel_gpu_opencl_wrapper.o:	./common.h \
 	./kernel/kernel_gpu_opencl_wrapper.h \
 	./kernel/kernel_gpu_opencl_wrapper.c \
-	findK.sycl
+	./kernel/findK.sycl
 	$(CC) $(CFLAGS)	$(KERNEL_DIM) ./kernel/kernel_gpu_opencl_wrapper.c \
 		-c \
 		-o ./kernel/kernel_gpu_opencl_wrapper.o
@@ -82,7 +81,7 @@ main.o:	./common.h \
 ./kernel/kernel_gpu_opencl_wrapper_2.o:	./common.h \
 	./kernel/kernel_gpu_opencl_wrapper_2.h \
 	./kernel/kernel_gpu_opencl_wrapper_2.c \
-	findRangeK.sycl
+	./kernel/findRangeK.sycl
 	$(CC) $(CFLAGS)	$(KERNEL_DIM) ./kernel/kernel_gpu_opencl_wrapper_2.c \
 		-c \
 		-o ./kernel/kernel_gpu_opencl_wrapper_2.o 
