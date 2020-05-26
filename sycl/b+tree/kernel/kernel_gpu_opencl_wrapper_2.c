@@ -58,7 +58,7 @@ kernel_gpu_opencl_wrapper_2(
 
   time0 = get_time();
 
-  { // SYCL scopde
+  { // SYCL scope
 #ifdef USE_GPU
     gpu_selector dev_sel;
 #else
@@ -119,7 +119,7 @@ kernel_gpu_opencl_wrapper_2(
             });
         });
 
-  } // SYCL scopde
+  } // SYCL scope
   time6 = get_time();
 
 #ifdef DEBUG
@@ -133,7 +133,7 @@ kernel_gpu_opencl_wrapper_2(
   //	DISPLAY TIMING
   //======================================================================================================================================================150
 
-  printf("Total time:\n");
+  printf("Device offloading time:\n");
   printf("%.12f s\n", (float) (time6-time0) / 1000000);
 
   //======================================================================================================================================================150
