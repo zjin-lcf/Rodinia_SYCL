@@ -45,7 +45,7 @@ SRC = nw.c
 
 EXE = nw
 
-$(EXE) : $(SRC)
+$(EXE) : $(SRC) kernel1.sycl kernel2.sycl
 	$(CC) $(CFLAGS) $(SRC) -o $(EXE) $(LDFLAGS) 
 
 run: $(EXE)

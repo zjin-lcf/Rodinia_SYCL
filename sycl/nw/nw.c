@@ -144,24 +144,6 @@ int main(int argc, char **argv){
   for( int j = 1; j< max_cols ; j++)
     input_itemsets[j] = -j * penalty;
 
-  int nworkitems = BLOCK_SIZE;
-  int workgroupsize = BLOCK_SIZE;
-
-  if(nworkitems < 1 || workgroupsize < 0){
-    printf("ERROR: invalid or missing <num_work_items>[/<work_group_size>]\n"); 
-    return -1;
-  }
-  // set global and local workitems
-  const size_t local_work[3] = { (size_t)workgroupsize, 1, 1 }; 
-  size_t global_work[3] = { (size_t)nworkitems, 1, 1 }; //nworkitems = no. of GPU threads
-
-
-  const int worksize = max_cols - 1;
-  printf("worksize = %d\n", worksize);
-  //these two parameters are for extension use, don't worry about it.
-  const int offset_r = 0;
-  const int offset_c = 0;
-  const int block_width = worksize/BLOCK_SIZE ;
 
   double offload_start = get_time();
   { // SYCL scope
@@ -171,6 +153,27 @@ int main(int argc, char **argv){
     cpu_selector dev_sel;
 #endif
     queue q(dev_sel);
+
+    int nworkitems = BLOCK_SIZE;
+    int workgroupsize = BLOCK_SIZE;
+#ifdef DEBUG
+    if(nworkitems < 1 || workgroupsize < 0){
+	    printf("ERROR: invalid or missing <num_work_items>[/<work_group_size>]\n"); 
+	    return -1;
+    }
+#endif
+    // set global and local workitems
+    const size_t local_work[3] = { (size_t)workgroupsize, 1, 1 }; 
+    size_t global_work[3] = { (size_t)nworkitems, 1, 1 }; //nworkitems = no. of GPU threads
+
+    const int worksize = max_cols - 1;
+#ifdef DEBUG
+    printf("worksize = %d\n", worksize);
+#endif
+    //these two parameters are for extension use, don't worry about it.
+    const int offset_r = 0;
+    const int offset_c = 0;
+    const int block_width = worksize/BLOCK_SIZE ;
 
     const property_list props = property::buffer::use_host_ptr();
 
