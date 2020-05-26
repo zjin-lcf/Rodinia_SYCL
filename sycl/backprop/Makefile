@@ -40,11 +40,14 @@ ifeq ($(DEVICE),gpu)
 endif
 
 
-backprop: backprop.o imagenet.o facetrain.o
-	$(CC) $(CFLAGS) backprop_sycl.cpp backprop.o imagenet.o facetrain.o -o backprop $(LDFLAGS)
+backprop: backprop_sycl.o backprop.o imagenet.o facetrain.o
+	$(CC) $(CFLAGS) backprop_sycl.o backprop.o imagenet.o facetrain.o -o backprop $(LDFLAGS)
 
 %.o: %.[ch]
 	$(CC) $(CFLAGS) $< -c
+
+backprop_sycl.o: backprop_sycl.cpp bpnn_adjust_weights.sycl  bpnn_layerforward.sycl
+	$(CC) $(CFLAGS) backprop_sycl.cpp -c
 	
 backprop.o: backprop.c 
 	$(CC) $(CFLAGS) backprop.c -c
