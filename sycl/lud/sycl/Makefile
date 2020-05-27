@@ -41,7 +41,10 @@ endif
 
 EXE = lud
 
-$(EXE): lud.cpp ../common/common.c
+$(EXE): lud.cpp ../common/common.c \
+	kernel_lud_diagonal.sycl \
+	kernel_lud_internal.sycl \
+       	kernel_lud_perimeter.sycl
 	$(CC) $(KERNEL_DIM) $(CFLAGS) -o $(EXE) lud.cpp ../common/common.c $(LDFLAGS)
 
 run:
