@@ -82,8 +82,8 @@ long long get_time() {
     gettimeofday(&tv, NULL);
     return (tv.tv_sec * 1000000) +tv.tv_usec;
 }
-// Returns the number of seconds elapsed between the two specified times
 
+/* Returns the number of seconds elapsed between the two specified times */
 float elapsed_time(long long start_time, long long end_time) {
     return (float) (end_time - start_time) / (1000 * 1000);
 }
@@ -597,7 +597,7 @@ int particleFilter(unsigned char * I, int IszX, int IszY, int Nfr, int * seed, i
   } // scope
   long long offload_end = get_time();
 
-    printf("Device (CPU/GPU) Execution: %lf\n", elapsed_time(offload_start, offload_end));
+    printf("Device offloading time: %lf (s)\n", elapsed_time(offload_start, offload_end));
     //printf("SEND TO SEND BACK: %lf\n", elapsed_time(back_time, back_end_time));
     //printf("SEND ARRAY X BACK: %lf\n", elapsed_time(free_time, arrayX_time));
     //printf("SEND ARRAY Y BACK: %lf\n", elapsed_time(arrayX_time, arrayY_time));
