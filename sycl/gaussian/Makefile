@@ -49,7 +49,7 @@ $(EXE) : $(SRC)
 	$(CC) $(CFLAGS) $(SRC) -o $(EXE) $(LDFLAGS) 
 
 run: $(EXE)
-	./gaussian -q -t -s 512
+	./gaussian -q -t -s 1024
 
 	
 clean: 
