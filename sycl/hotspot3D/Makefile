@@ -40,8 +40,8 @@ ifeq ($(DEVICE),gpu)
 endif
 
 
-3D: 3D.c 3D_helper.c
-	$(CC) $^ $(CFLAGS) $(LIBS) $(LDFLAGS) -o $@
+3D: 3D.c 3D_helper.c kernel_hotspot.sycl
+	$(CC) 3D.c 3D_helper.c $(CFLAGS) $(LIBS) $(LDFLAGS) -o $@
 
 run: 3D
 	./3D 512 8 100 ../../data/hotspot3D/power_512x8 ../../data/hotspot3D/temp_512x8 output.out

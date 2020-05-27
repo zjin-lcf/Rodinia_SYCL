@@ -139,7 +139,7 @@ int main(int argc, char** argv)
 
   float acc = accuracy(tempOut,answer,numRows*numCols*layers);
   float time = (float)((stop - start)/(1000.0 * 1000.0));
-  printf("Total device offloading time: %.3f (s)\n",time);
+  printf("Device offloading time: %.3f (s)\n",time);
   printf("Root-mean-square error: %e\n",acc);
 
   writeoutput(tempOut,numRows,numCols,layers,ofile);
