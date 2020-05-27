@@ -44,7 +44,11 @@ endif
 
 ALL: SYCL_particlefilter_single
 
-SYCL_particlefilter_single: ex_particle_SYCL_single_seq.o
+SYCL_particlefilter_single: ex_particle_SYCL_single_seq.o \
+	kernel_find_index.sycl  \
+	kernel_likelihood.sycl  \
+	kernel_normalize_weights.sycl  \
+	kernel_sum.sycl
 	$(CC) $(CFLAGS) ex_particle_SYCL_single_seq.o $(LDFLAGS)  -o SYCL_particlefilter_single 
 
 %.o: %.[ch]
