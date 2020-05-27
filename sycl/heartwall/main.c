@@ -37,15 +37,15 @@
 
 void 
 kernel_gpu_wrapper(	params_common common,
-							int* endoRow,
-							int* endoCol,
-							int* tEndoRowLoc,
-							int* tEndoColLoc,
-							int* epiRow,
-							int* epiCol,
-							int* tEpiRowLoc,
-							int* tEpiColLoc,
-							avi_t* frames);
+		int* endoRow,
+		int* endoCol,
+		int* tEndoRowLoc,
+		int* tEndoColLoc,
+		int* epiRow,
+		int* epiCol,
+		int* tEpiRowLoc,
+		int* tEpiColLoc,
+		avi_t* frames);
 
 //======================================================================================================================================================150
 //	END
@@ -56,11 +56,10 @@ kernel_gpu_wrapper(	params_common common,
 //========================================================================================================================================================================================================200
 
 int 
-main(	int argc, 
-		char* argv []){
+main(	int argc, char* argv []){
 
 
-  printf("WG size of kernel = %d \n", NUMBER_THREADS);
+	printf("WG size of kernel = %d \n", NUMBER_THREADS);
 	//======================================================================================================================================================150
 	//	VARIABLES
 	//======================================================================================================================================================150
@@ -94,11 +93,11 @@ main(	int argc,
 	char* video_file_name;
 
 	// open movie file
- 	video_file_name = (char *) "../../data/heartwall/test.avi";
+	video_file_name = (char *) "../../data/heartwall/test.avi";
 	frames = (avi_t*)AVI_open_input_file(video_file_name, 1);														// added casting
 	if (frames == NULL)  {
-		   AVI_print_error((char *) "Error with AVI_open_input_file");
-		   return -1;
+		AVI_print_error((char *) "Error with AVI_open_input_file");
+		return -1;
 	}
 
 	// dimensions
@@ -136,19 +135,20 @@ main(	int argc,
 	//	READ PARAMETERS FROM FILE
 	//====================================================================================================100
 
-	read_parameters(	"../../data/heartwall/input.txt",
-						&common.tSize,
-						&common.sSize,
-						&common.maxMove,
-						&common.alpha);
+	char* param_file_name = (char *) "../../data/heartwall/input.txt";
+	read_parameters( param_file_name,	
+			&common.tSize,
+			&common.sSize,
+			&common.maxMove,
+			&common.alpha);
 
 	//====================================================================================================100
 	//	READ SIZE OF INPUTS FROM FILE
 	//====================================================================================================100
 
-	read_header(	"../../data/heartwall/input.txt",
-					&common.endoPoints,
-					&common.epiPoints);
+	read_header(param_file_name,
+			&common.endoPoints,
+			&common.epiPoints);
 
 	common.allPoints = common.endoPoints + common.epiPoints;
 
@@ -190,13 +190,13 @@ main(	int argc,
 	//	READ DATA FROM FILE
 	//==================================================50
 
-	read_data(	"../../data/heartwall/input.txt",
-				common.endoPoints,
-				endoRow,
-				endoCol,
-				common.epiPoints,
-				epiRow,
-				epiCol);
+	read_data(param_file_name,
+			common.endoPoints,
+			endoRow,
+			endoCol,
+			common.epiPoints,
+			epiRow,
+			epiCol);
 
 	//==================================================50
 	//	End
@@ -213,15 +213,15 @@ main(	int argc,
 	//======================================================================================================================================================150
 
 	kernel_gpu_wrapper(	common,
-								endoRow,
-								endoCol,
-								tEndoRowLoc,
-								tEndoColLoc,
-								epiRow,
-								epiCol,
-								tEpiRowLoc,
-								tEpiColLoc,
-								frames);
+			endoRow,
+			endoCol,
+			tEndoRowLoc,
+			tEndoColLoc,
+			epiRow,
+			epiCol,
+			tEpiRowLoc,
+			tEpiColLoc,
+			frames);
 
 	time4 = get_time();
 
@@ -232,12 +232,12 @@ main(	int argc,
 	write_data(	"result.txt",
 			common.no_frames,
 			common.frames_processed,		
-				common.endoPoints,
-				tEndoRowLoc,
-				tEndoColLoc,
-				common.epiPoints,
-				tEpiRowLoc,
-				tEpiColLoc);
+			common.endoPoints,
+			tEndoRowLoc,
+			tEndoColLoc,
+			common.epiPoints,
+			tEpiRowLoc,
+			tEpiColLoc);
 
 #endif
 	//==================================================50
@@ -278,20 +278,25 @@ main(	int argc,
 	//======================================================================================================================================================150
 
 	printf("Time spent in different stages of the application:\n");
-	printf("%15.12f s, %15.12f % : READ INITIAL VIDEO FRAME\n",												(fp) (time1-time0) / 1000000, (fp) (time1-time0) / (fp) (time5-time0) * 100);
-	printf("%15.12f s, %15.12f % : READ COMMAND LINE PARAMETERS\n",											(fp) (time2-time1) / 1000000, (fp) (time2-time1) / (fp) (time5-time0) * 100);
-	printf("%15.12f s, %15.12f % : READ INPUTS FROM FILE\n",												(fp) (time3-time2) / 1000000, (fp) (time3-time2) / (fp) (time5-time0) * 100);
-	printf("%15.12f s, %15.12f % : GPU ALLOCATION, COPYING, COMPUTATION\n",									(fp) (time4-time3) / 1000000, (fp) (time4-time3) / (fp) (time5-time0) * 100);
-	printf("%15.12f s, %15.12f % : FREE MEMORY\n", 															(fp) (time5-time4) / 1000000, (fp) (time5-time4) / (fp) (time5-time0) * 100);
+	printf("%15.12f s, %15.12f : READ INITIAL VIDEO FRAME\n",
+			(fp) (time1-time0) / 1000000, (fp) (time1-time0) / (fp) (time5-time0) * 100);
+	printf("%15.12f s, %15.12f : READ COMMAND LINE PARAMETERS\n",
+			(fp) (time2-time1) / 1000000, (fp) (time2-time1) / (fp) (time5-time0) * 100);
+	printf("%15.12f s, %15.12f : READ INPUTS FROM FILE\n",
+			(fp) (time3-time2) / 1000000, (fp) (time3-time2) / (fp) (time5-time0) * 100);
+	printf("%15.12f s, %15.12f : GPU ALLOCATION, COPYING, COMPUTATION\n",
+			(fp) (time4-time3) / 1000000, (fp) (time4-time3) / (fp) (time5-time0) * 100);
+	printf("%15.12f s, %15.12f : FREE MEMORY\n",
+			(fp) (time5-time4) / 1000000, (fp) (time5-time4) / (fp) (time5-time0) * 100);
 	printf("Total time:\n");
-	printf("%15.12f s\n", 																					(fp) (time5-time0) / 1000000);
+	printf("%15.12f s\n", (fp) (time5-time0) / 1000000);
 
 	//======================================================================================================================================================150
 	//	End
 	//======================================================================================================================================================150
 
-//========================================================================================================================================================================================================200
-//	End
-//========================================================================================================================================================================================================200
+	//========================================================================================================================================================================================================200
+	//	End
+	//========================================================================================================================================================================================================200
 
 }
