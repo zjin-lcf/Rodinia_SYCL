@@ -112,7 +112,6 @@ void copy(queue &q, buffer<T,1> &dst, buffer<T,1> &src, int N){
       });
 }
 
-//void dump(cl_mem variables, int nel, int nelr){
 void dump(queue &q, buffer<float,1> &variables, int nel, int nelr){
   float* h_variables = new float[nelr*NVAR];
   //download(h_variables, variables, nelr*NVAR);
@@ -121,6 +120,8 @@ void dump(queue &q, buffer<float,1> &variables, int nel, int nelr){
       variables_acc(variables, cgh, range<1>(nelr*NVAR), id<1>(0));  // add workgroup size
       cgh.copy(variables_acc, h_variables);
       });
+
+  q.wait();
 
   {
     std::ofstream file("density");

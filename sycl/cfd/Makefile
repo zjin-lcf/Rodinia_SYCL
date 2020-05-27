@@ -47,14 +47,18 @@ endif
 SRC = euler3d.cpp
 EXE = euler3d
 
-release:$(SRC)
+$(EXE):$(SRC) kernel_compute_flux.sycl  \
+               kernel_compute_step_factor.sycl  \
+	       kernel_initialize_variables.sycl \
+	       kernel_memset.sycl \
+	       kernel_time_step.sycl
 	$(CC) $(CFLAGS) $(KERNEL_DIM) $(SRC) -o $(EXE) $(LDFLAGS)
 
-run: release
+run: $(EXE)
 	./euler3d ../../data/cfd/fvcorr.domn.097K 
 	#./euler3d ../../data/cfd/fvcorr.domn.193K   
 	#./euler3d ../../data/cfd/missile.domn.0.2M  
 
 
-clean: $(SRC)
-	rm -f $(EXE) $(EXE).linkinfo result*
+clean: 
+	rm -f $(EXE) $(EXE).linkinfo result*  density momentum density_energy
