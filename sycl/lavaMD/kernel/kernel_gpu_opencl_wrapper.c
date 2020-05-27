@@ -161,7 +161,7 @@ kernel_gpu_opencl_wrapper(	par_str par_cpu,
 
   //printf("%15.12f s, %15.12f : GPU MEM: COPY OUT and FREE\n",				(float) (time5-time4) / 1000000, (float) (time5-time4) / (float) (time6-time0) * 100);
 
-  printf("Total device offloading time:\n");
+  printf("Device offloading time:\n");
   printf("%.12f s\n", 												(float) (time6-time0) / 1000000);
 
 }
