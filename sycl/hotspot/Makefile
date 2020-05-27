@@ -43,12 +43,12 @@ endif
 
 EXE = hotspot
 
-$(EXE): hotspot.cpp hotspot.h 
+$(EXE): hotspot.cpp hotspot.h kernel_hotspot.sycl
 	$(CC) $(CFLAGS) -o $(EXE) hotspot.cpp $(LDFLAGS)
 
 run: $(EXE)
-	./$(EXE) 64 2 2 ../../data/hotspot/temp_64 ../../data/hotspot/power_64 output_64.out
 	./$(EXE) 512 2 2 ../../data/hotspot/temp_512 ../../data/hotspot/power_512 output_512.out
+	#./$(EXE) 64 2 2 ../../data/hotspot/temp_64 ../../data/hotspot/power_64 output_64.out
 
 clean:
 	rm -f $(EXE)

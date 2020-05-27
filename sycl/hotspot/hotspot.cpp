@@ -14,14 +14,14 @@ void writeoutput(float *vect, int grid_rows, int grid_cols, char *file) {
   FILE *fp;
   char str[STR_SIZE];
 
-  if( (fp = fopen(file, "w" )) == 0 )
-    printf( "The file was not opened\n" );
-
+  if( (fp = fopen(file, "w" )) == 0 ) {
+    printf( "Unable to open file %s\n", file );
+    return;
+  }
 
   for (i=0; i < grid_rows; i++) 
     for (j=0; j < grid_cols; j++)
     {
-
       sprintf(str, "%d\t%g\n", index, vect[i*grid_cols+j]);
       fputs(str,fp);
       index++;
@@ -67,10 +67,7 @@ void readinput(float *vect, int grid_rows, int grid_cols, char *file) {
 }
 
 
-/*
-   compute N time steps
-   */
-
+/* compute N time steps */
 int compute_tran_temp(queue &q, 
     buffer<float,1> &MatrixPower, 
     std::vector<buffer<float,1>> &MatrixTemp, 
@@ -122,8 +119,8 @@ int compute_tran_temp(queue &q,
             nd_range<2>(range<2>(global_work_size[0], global_work_size[1]), 
                         range<2>(local_work_size[0], local_work_size[1])), [=] (nd_item<2> item) {
 #include "kernel_hotspot.sycl"
-            });
         });
+    });
 
     // Swap input and output GPU matrices
     src = 1 - src;
@@ -141,7 +138,6 @@ int compute_tran_temp(queue &q,
   for (int i=0; i < 1; i++) 
     for (int j=0; j < 16; j++)
     {
-
       printf("%g\n", vect_acc[i*col+j]);
     }
 #endif
@@ -234,8 +230,8 @@ int main(int argc, char** argv) {
     });
   } // SYCL scope
 
-  long long end_time = get_time();	
-  printf("Total offload time: %.3f seconds\n", ((float) (end_time - start_time)) / (1000*1000));
+  long long end_time = get_time();
+  printf("Device offloading time: %.3f seconds\n", ((float) (end_time - start_time)) / (1000*1000));
 
   // Write final output to output file
   writeoutput(FilesavingPower, grid_rows, grid_cols, ofile);
