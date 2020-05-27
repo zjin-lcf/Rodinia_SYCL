@@ -113,7 +113,7 @@ int main(int argc, char *argv[]) {
   long long offload_end = get_time();
 
   if (timing) {
-    printf("offload time %lld (us)\n\n",offload_end - offload_start);
+    printf("Device offloading time %lld (us)\n\n",offload_end - offload_start);
   }
 
 
