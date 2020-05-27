@@ -52,12 +52,22 @@ ifdef TIMER
 override TIMER = -DTIMER
 endif
 
-hybridsort: hybridsort.c bucketsort.h mergesort.h bucketsort.c mergesort.c
+hybridsort: hybridsort.c bucketsort.o mergesort.o
 	$(CC) $(CFLAGS) -o hybridsort $(VERIFY) $(OUTPUT) $(TIMER) \
-		hybridsort.c bucketsort.c mergesort.c $(LDFLAGS)
+		hybridsort.c bucketsort.o mergesort.o $(LDFLAGS)
+
+bucketsort.o: bucketsort.c \
+	kernel_bucketprefix.sycl \
+	kernel_histogram.sycl \
+	kernel_bucketcount.sycl \
+       	kernel_bucketsort.sycl  
+	$(CC) $(CFLAGS) -o bucketsort.o -c bucketsort.c 
+
+mergesort.o: mergesort.c mergesort.h kernel_mergeSortPass.sycl
+	$(CC) $(CFLAGS) -o mergesort.o -c mergesort.c 
 
 run: hybridsort
 	./hybridsort r
 
 clean:
-	rm -f  hybridsort
+	rm -f  bucketsort.o mergesort.o hybridsort
