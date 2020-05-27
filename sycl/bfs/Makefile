@@ -5,7 +5,7 @@ DEVICE      = gpu
 
 
 
-# Standard flags
+# Standard flags (profiling is enabled to measure device offloading time)
 CFLAGS := -std=c++11 -Wall -DPROFILING
 
 # Linker flags
@@ -43,14 +43,14 @@ SRC = bfs.cpp timer.cc
 
 EXE = bfs
 
-release:$(SRC)
+$(EXE):$(SRC)
 	$(CC) $(CFLAGS)   $(SRC) -o $(EXE)  $(LDFLAGS) 
 
-run:
+run: $(EXE)
 	./$(EXE) ../../data/bfs/graph1MW_6.txt
-	./$(EXE) ../../data/bfs/graph4096.txt
-	./$(EXE) ../../data/bfs/graph65536.txt
+	#./$(EXE) ../../data/bfs/graph4096.txt
+	#./$(EXE) ../../data/bfs/graph65536.txt
 
 
-clean: $(SRC)
+clean: 
 	rm -f $(EXE) $(EXE).linkinfo result*
