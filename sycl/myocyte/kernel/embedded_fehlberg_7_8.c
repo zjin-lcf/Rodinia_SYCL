@@ -141,7 +141,7 @@ embedded_fehlberg_7_8(	fp timeinst,
 	static const fp a4 = 1.0 / 6.0;
 	static const fp a5 = 5.0 / 12.0;
 	static const fp a6 = 1.0 / 2.0;
-	static const fp a7 = 5.0 / 6.0;
+	//static const fp a7 = 5.0 / 6.0;
 	static const fp a8 = 1.0 / 6.0;
 	static const fp a9 = 2.0 / 3.0;
 	static const fp a10 = 1.0 / 3.0;
@@ -156,10 +156,10 @@ embedded_fehlberg_7_8(	fp timeinst,
 	static const fp b61 = 1.0 / 20.0;
 	static const fp b64 = 5.0 / 20.0;
 	static const fp b65 = 4.0 / 20.0;
-	static const fp b71 = -25.0 / 108.0;
-	static const fp b74 =  125.0 / 108.0;
-	static const fp b75 = -260.0 / 108.0;
-	static const fp b76 =  250.0 / 108.0;
+	//static const fp b71 = -25.0 / 108.0;
+	//static const fp b74 =  125.0 / 108.0;
+	//static const fp b75 = -260.0 / 108.0;
+	//static const fp b76 =  250.0 / 108.0;
 	static const fp b81 = 31.0/300.0;
 	static const fp b85 = 61.0/225.0;
 	static const fp b86 = -2.0/9.0;
