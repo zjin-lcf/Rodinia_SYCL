@@ -18,6 +18,12 @@
 
 #define THREADS 256
 
+double get_time() {
+  struct timeval t;
+  gettimeofday(&t,NULL);
+  return t.tv_sec+t.tv_usec*1e-6;
+}
+
 struct dwt {
   char * srcFilename;
   char * outFilename;
@@ -85,17 +91,26 @@ int getImg(char * srcFilename, unsigned char *srcImg, int inputSize)
     strcat(newSrc, srcFilename);
     srcFilename= newSrc;
   }
-  printf("Loading ipnput: %s\n", srcFilename);
+#ifdef DEBUG
+  printf("Loading input file: %s\n", srcFilename);
+#endif
 
   //read image
   int i = open(srcFilename, O_RDONLY, 0644);
   if (i == -1) 
   { 
-    error(0,errno,"cannot access %s", srcFilename);
+    error(0,errno,"cannot open %s", srcFilename);
     return -1;
   }
   int ret = read(i, srcImg, inputSize);
-  printf("precteno %d, inputsize %d\n", ret, inputSize);
+  if (ret == -1) 
+  {
+    error(0,errno,"cannot read %s", srcFilename);
+    return -1;
+  }
+#ifdef DEBUG
+  printf("actual read size (bytes): %d, input size  (bytes)%d\n", ret, inputSize);
+#endif
   close(i);
 
   return 0;
@@ -208,7 +223,9 @@ void launchFDWT53Kernel (queue &q, int WIN_SX, int WIN_SY, buffer<T,1> &in, buff
   //use function divRndUp(n, d){return (n / d) + ((n % d) ? 1 : 0);}
   int gy = ( sy/ (WIN_SY*steps)) + ((sy %  (WIN_SY*steps)) ? 1 : 0);
 
+#ifdef DEBUG
   printf("sliding steps = %d , gx = %d , gy = %d \n", steps, gx, gy);
+#endif
 
   // prepare grid size
   size_t globalWorkSize[2] = { (size_t)gx*WIN_SX, (size_t)gy};
@@ -225,7 +242,9 @@ void launchFDWT53Kernel (queue &q, int WIN_SX, int WIN_SY, buffer<T,1> &in, buff
 #include "kernel_fdwt53.sycl"
         });
       });
+#ifdef DEBUG
   printf("kl_fdwt53Kernel in launchFDW53Kernel has finished\n");
+#endif
 }
 
 
@@ -277,7 +296,9 @@ void fdwt53(queue &q, buffer<T,1> in, buffer<T,1> out, int sizeX, int sizeY, int
   template <typename T>
 int nStage2dDWT(queue &q, buffer<T,1> &in, buffer<T,1> &out, buffer<T,1> &backup, int pixWidth, int pixHeight, int stages, bool forward)
 {
+#ifdef DEBUG
   printf("\n*** %d stages of 2D forward DWT:\n", stages);
+#endif
 
   // create backup of input, because each test iteration overwrites it 
   //const int size = pixHeight * pixWidth * sizeof(int);
@@ -334,7 +355,7 @@ int writeLinear(queue &q, buffer<T,1> &component, int pixWidth, int pixHeight, c
   // fatal_CL(errNum, __LINE__);	
   //
 #ifdef DEBUG
-  printf("filename: %s\n", filename);
+  printf("Dump filename: %s for verification\n", filename);
   for (int i = 0; i < samplesNum; i++)
     printf("%d %d\n", i, gpu_output[i]);
   printf("\n");
@@ -729,6 +750,8 @@ int main(int argc, char **argv)
   if (getImg(d->srcFilename, d->srcImg, inputSize) == -1) 
     return -1;
 
+  double offload_start = get_time();
+  { // sycl scope
 #ifdef USE_GPU
   gpu_selector dev_sel;
 #else
@@ -743,6 +766,10 @@ int main(int argc, char **argv)
   }
   else // 5/3
     processDWT<int>(q, d, forward, writeVisual);
+
+  }
+  double offload_end = get_time();
+  printf("Device offloading time = %lf(s)\n", offload_end - offload_start);
 
   return 0;
 

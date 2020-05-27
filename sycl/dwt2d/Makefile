@@ -39,10 +39,12 @@ ifeq ($(DEVICE),gpu)
 endif
 
 
-dwt2d: main.cpp
+dwt2d: main.cpp \
+       kernel_CopySrcToComponent.sycl \
+       kernel_CopySrcToComponents.sycl \
+       kernel_fdwt53.sycl
 	$(CC) $(CFLAGS) -o dwt2d \
 		main.cpp \
-		$(OUTPUT) \
 		$(LDFLAGS)
 		
 run: dwt2d
