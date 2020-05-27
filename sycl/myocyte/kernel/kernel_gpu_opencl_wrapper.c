@@ -61,18 +61,14 @@ kernel_gpu_opencl_wrapper(	int xmax,
 	//======================================================================================================================================================150
 
 	long long time0;
-	long long time1;
-	long long time2;
-	long long time3;
 	long long time4;
-	long long time5;
-	long long timecopyin = 0;
-	long long timekernel = 0;
-	long long timecopyout = 0;
-	long long timeother;
+	long long timecopyin;
+	long long timekernel;
+	long long timecopyout;
 
 	time0 = get_time();
 
+	{ // sycl scope
 	int i;
 
 	//======================================================================================================================================================150
@@ -89,14 +85,6 @@ kernel_gpu_opencl_wrapper(	int xmax,
 	//	COMMON VARIABLES
 	//====================================================================================================100
 
-	//====================================================================================================100
-	//	INITIAL DRIVER OVERHEAD
-	//====================================================================================================100
-
-	// cudaThreadSynchronize();
-
-	time1 = get_time();
-
 	//======================================================================================================================================================150
 	//	ALLOCATE MEMORY
 	//======================================================================================================================================================150
@@ -106,7 +94,6 @@ kernel_gpu_opencl_wrapper(	int xmax,
 	buffer<fp,1> d_params(PARAMETERS);
 	buffer<fp,1> d_com(3);
 
-	time2 = get_time();
 
 	//======================================================================================================================================================150
 	//	EXECUTION
@@ -151,32 +138,15 @@ kernel_gpu_opencl_wrapper(	int xmax,
 		// // }
 	// // }
 
-	time3 = get_time();
-
-	//======================================================================================================================================================150
-	//	FREE GPU MEMORY
-	//======================================================================================================================================================150
-	time4= get_time();
-
 	//================================================================================================================================================150
 	//	DISPLAY TIMING
 	//======================================================================================================================================================150
+	} // sycl scope
 
-	printf("Time spent in different stages of the application:\n");
-	printf("%15.12f s, %15.12f % : CPU: GPU SETUP\n", 								(float) (time1-time0) / 1000000, (float) (time1-time0) / (float) (time4-time0) * 100);
-	printf("%15.12f s, %15.12f % : CPU: ALLOCATE GPU MEMORY\n", 					(float) (time2-time1) / 1000000, (float) (time2-time1) / (float) (time4-time0) * 100);
-	printf("%15.12f s, %15.12f % : GPU: COMPUTATION\n", 							(float) (time3-time2) / 1000000, (float) (time3-time2) / (float) (time4-time0) * 100);
+	time4 = get_time();
 
-	printf("\tGPU: COMPUTATION Components:\n");
-	printf("\t%15.12f s, %15.12f % : GPU: COPY DATA IN\n", 							(float) (timecopyin) / 1000000, (float) (timecopyin) / (float) (time4-time0) * 100);
-	printf("\t%15.12f s, %15.12f % : GPU: KERNEL\n", 								(float) (timekernel) / 1000000, (float) (timekernel) / (float) (time4-time0) * 100);
-	printf("\t%15.12f s, %15.12f % : GPU: COPY DATA OUT\n", 						(float) (timecopyout) / 1000000, (float) (timecopyout) / (float) (time4-time0) * 100);
-	timeother = time3-time2-timecopyin-timekernel-timecopyout;
-	printf("\t%15.12f s, %15.12f % : GPU: OTHER\n", 								(float) (timeother) / 1000000, (float) (timeother) / (float) (time4-time0) * 100);
-
-	printf("%15.12f s, %15.12f % : CPU: FREE GPU MEMORY\n", 						(float) (time4-time3) / 1000000, (float) (time4-time3) / (float) (time4-time0) * 100);
-	printf("Total time:\n");
-	printf("%.12f s\n", 															(float) (time4-time0) / 1000000);
+	printf("Device offloading time:\n");
+	printf("%.12f s\n", (float) (time4-time0) / 1000000);
 
 	//======================================================================================================================================================150
 	//	RETURN
