@@ -47,7 +47,7 @@ $(EXE): lud.cpp ../common/common.c \
        	kernel_lud_perimeter.sycl
 	$(CC) $(KERNEL_DIM) $(CFLAGS) -o $(EXE) lud.cpp ../common/common.c $(LDFLAGS)
 
-run:
+run: $(EXE)
 	./$(EXE) -s 2048 -v
 
 clean:
