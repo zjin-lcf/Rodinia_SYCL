@@ -246,8 +246,9 @@ main(	int argc,
     //====================================================================================================100
 
     // y
+    char* ytext = (char*) "../../data/myocyte/y.txt";
     for(i=0; i<workload; i++){
-      read_file( "../../data/myocyte/y.txt",
+      read_file( ytext,
           y[i][0],
           EQUATIONS,
           1,
@@ -255,8 +256,9 @@ main(	int argc,
     }
 
     // params
+    char* params_text = (char*) "../../data/myocyte/params.txt";
     for(i=0; i<workload; i++){
-      read_file("../../data/myocyte/params.txt",
+      read_file( params_text,
           params[i],
           PARAMETERS,
           1,
