@@ -5,7 +5,7 @@ DEVICE      = gpu
 
 
 # turning the work-group size
-BLOCK_SIZE=512
+BLOCK_SIZE=256
 
 # Standard flags
 CFLAGS := -std=c++11 -Wall -DBLOCK_SIZE=$(BLOCK_SIZE)
