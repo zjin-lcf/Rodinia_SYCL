@@ -84,7 +84,7 @@ int cluster(int      npoints,				/* number of data points */
 
         cgh.parallel_for<class kernel2>(
             nd_range<1>(range<1>(global_work_size), range<1>(local_work_size)), [=] (nd_item<1> item) {
-              unsigned int tid = item.get_global_id();
+              unsigned int tid = item.get_global_id(0);
               if (tid < npoints) {
                 for(int i = 0; i <  nfeatures; i++)
                   acc_feature_swap[i * npoints + tid] = acc_feature[tid * nfeatures + i];
@@ -161,7 +161,7 @@ int cluster(int      npoints,				/* number of data points */
                 nd_range<1>(range<1>(global_work_size), range<1>(local_work_size)), 
                 [=] (nd_item<1> item) 
             {
-                unsigned int point_id = item.get_global_id();
+                unsigned int point_id = item.get_global_id(0);
                 int index = 0;
                 if (point_id < npoints) {
                   float min_dist=FLT_MAX;
