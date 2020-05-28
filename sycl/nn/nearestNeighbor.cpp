@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
   SyclFindNearestNeighbors(numRecords,locations,lat,lng,recordDistances,timing);
   long long offload_end = get_time();
   if (timing)
-    printf("Device offload time %lld (us)\n", offload_end - offload_start);
+    printf("Device offloading time %lld (us)\n", offload_end - offload_start);
 
   // find the resultsCount least distances
   findLowest(records,recordDistances,numRecords,resultsCount);
