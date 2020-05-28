@@ -54,7 +54,7 @@ main.o: main.cpp  kernel.sycl
 	$(CC) $(CFLAGS) main.cpp -c -o main.o
 
 run: pathfinder
-	./pathfinder 100000 100 20 > result.txt
+	./pathfinder 100000 100 20
 
 clean:
 	@rm -f pathfinder *.o *.out *~ *\#
