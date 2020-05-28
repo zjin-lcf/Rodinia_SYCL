@@ -110,7 +110,7 @@ heartwall:	./main.o \
 			-c \
 			-o ./util/timer/timer.o 
 
-run:
+run: heartwall
 	./heartwall 104
 
 clean:
