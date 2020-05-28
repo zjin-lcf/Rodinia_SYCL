@@ -23,9 +23,9 @@ run_codeplay () {
 }
 
 
-# It should the following directories
-#bfs  dwt2d     heartwall  hotspot3D   kmeans  lud      nn  particlefilter  srad
-#backprop  cfd  gaussian  hotspot    hybridsort  lavaMD  myocyte  nw  pathfinder      streamcluster
+# The list of directories
+# bfs dwt2d heartwall hotspot3D kmeans lud nn particlefilter srad
+# backprop cfd gaussian hotspot hybridsort lavaMD myocyte nw pathfinder streamcluster
 
 for dir in `find . -mindepth 1 -maxdepth 1 -type d | grep -v '.\.git'`
 do
