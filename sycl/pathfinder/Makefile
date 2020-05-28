@@ -2,6 +2,7 @@ VENDOR      = intel
 OPTIMIZE    = yes
 DEBUG       = no
 DEVICE      = gpu
+OUTPUT      = no
 
 
 
@@ -25,9 +26,13 @@ ifneq (,$(findstring intel,$(VENDOR)))
   LDFLAGS += 
 endif
 
+ifeq ($(OUTPUT),yes)
+  CFLAGS += -DBENCH_PRINT
+endif
+
 # Debug Flags
 ifeq ($(DEBUG),yes)
-  CFLAGS += -g -DBENCH_PRINT
+  CFLAGS += -g 
 endif
 
 # Optimization Flags
