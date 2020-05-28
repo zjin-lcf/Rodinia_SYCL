@@ -45,7 +45,7 @@ pathfinder: main.o
 	$(CC) main.o $(LDFLAGS) -o pathfinder
 
 # compile main function file into object (binary)
-main.o: main.cpp 
+main.o: main.cpp  kernel.sycl
 	$(CC) $(CFLAGS) main.cpp -c -o main.o
 
 run: pathfinder
