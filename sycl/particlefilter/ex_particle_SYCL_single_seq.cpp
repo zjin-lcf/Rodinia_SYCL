@@ -436,7 +436,7 @@ int particleFilter(unsigned char * I, int IszX, int IszY, int Nfr, int * seed, i
 
     int k;
     //float * Ik = (float *)calloc(IszX*IszY, sizeof(float));
-    int indX, indY;
+    //int indX, indY;
     //start send
 
     int threads_per_block = BLOCK_SIZE;
