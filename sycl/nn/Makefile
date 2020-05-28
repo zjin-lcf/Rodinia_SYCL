@@ -44,7 +44,7 @@ SRC = nearestNeighbor.cpp utils.cpp
 
 EXE = nn
 
-$(EXE):
+$(EXE): $(SRC) kernel_nn.sycl
 	$(CC) $(CFLAGS) $(SRC) -o $(EXE) $(LDFLAGS)
 
 run: $(EXE)
