@@ -42,11 +42,11 @@ endif
 SRC = streamcluster.cpp
 EXE = streamcluster
 
-release:$(SRC)
+$(EXE):$(SRC) kernel.sycl
 	$(CC) $(CFLAGS) $(SRC) -o $(EXE) $(LDFLAGS)	
 
-run: release
+run: $(EXE)
 	./$(EXE) 10 20 256 65536 65536 1000 none output.txt 1 
 
-clean: $(SRC)
+clean: 
 	rm -f $(EXE) $(EXE).linkinfo result*
