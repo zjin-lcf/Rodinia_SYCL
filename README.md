@@ -4,8 +4,8 @@ The benchmark can be used for CPU, GPU, FPGA, or other architectures that suppor
 
 ##  Prerequisites
 
-Intel<sup>®</sup> OneAPI Base Toolkit (https://software.intel.com/oneapi/base-kit) 
-Codeplay ComputeCpp (https://www.codeplay.com/products/computesuite/computecpp) 
+Intel<sup>®</sup> OneAPI Base Toolkit (https://software.intel.com/oneapi/base-kit)  
+Codeplay ComputeCpp<sup>™</sup> (https://www.codeplay.com/products/computesuite/computecpp) 
 
 
 ## Compilation
