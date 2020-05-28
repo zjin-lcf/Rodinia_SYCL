@@ -250,7 +250,7 @@ int main(int argc, char * argv[])
     h_cost[source]=0;
     h_cost_ref[source]=0;		
     //---------------------------------------------------------
-    printf("run bfs (#nodes = %d) on device (gpu) \n", no_of_nodes);
+    printf("run bfs (#nodes = %d) on device\n", no_of_nodes);
     run_bfs_gpu(no_of_nodes,h_graph_nodes,edge_list_size,h_graph_edges, 
                 h_graph_mask, h_updating_graph_mask, h_graph_visited, h_cost);	
     //---------------------------------------------------------
