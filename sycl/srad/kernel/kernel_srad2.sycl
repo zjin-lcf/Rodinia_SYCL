@@ -1,0 +1,35 @@
+// indexes
+int bx = item.get_group(0);	            // get current horizontal block index
+int tx = item.get_local_id(0);          // get current horizontal thread index
+int ei = bx*NUMBER_THREADS+tx;          // more threads than actual elements !!!
+int row;                                // column, x position
+int col;                                // row, y position
+
+// variables
+fp d_cN,d_cS,d_cW,d_cE;
+fp d_D;
+
+// figure out row/col location in new matrix
+row = (ei+1) % Nr - 1;  // (0-n) row
+col = (ei+1) / Nr ;     // (0-n) column
+if((ei+1) % Nr == 0){
+  row = Nr - 1;
+  col = col - 1;
+}
+
+if(ei<Ne){              // make sure that only threads matching jobs run
+
+  // diffusion coefficent
+  d_cN = d_c_acc[ei];  // north diffusion coefficient
+  d_cS = d_c_acc[d_iS_acc[row] + Nr*col];	// south diffusion coefficient
+  d_cW = d_c_acc[ei];	// west diffusion coefficient
+  d_cE = d_c_acc[row + Nr * d_jE_acc[col]];	// east diffusion coefficient
+
+  // divergence (equ 58)
+  d_D = d_cN*d_dN_acc[ei] + d_cS*d_dS_acc[ei] + d_cW*d_dW_acc[ei] + d_cE*d_dE_acc[ei];
+
+  // image update (equ 61) (every element of IMAGE)
+  d_I_acc[ei] = d_I_acc[ei] + 0.25*lambda*d_D; // updates image (based on input time step and divergence)
+
+}
+
