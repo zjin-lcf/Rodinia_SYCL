@@ -1,0 +1,19 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:575: checking for acc
+configure:605: checking for cc
+configure:635: checking for gcc
+configure:748: checking whether the C compiler (dpcpp  ) works
+configure:764: dpcpp -o conftest    conftest.c  1>&5
+clang++: warning: treating 'c' input as 'c++' when in C++ mode, this behavior is deprecated [-Wdeprecated]
+configure:761:1: error: C++ requires a type specifier for all declarations
+main(){return(0);}
+^
+1 error generated.
+configure: failed program was:
+
+#line 759 "configure"
+#include "confdefs.h"
+
+main(){return(0);}
