@@ -25,7 +25,7 @@ make VENDOR=codeplay
 
 There are also a number of switches that can be set in the makefile. Here is a sample of the control panel at the top of the makefile:
 
-```make
+```bash
 OPTIMIZE = no
 DEBUG    = yes
 ```
