@@ -1,6 +1,6 @@
 ##  Rodinia Benchmark Suite in SYCL
 
-The benchmark can be used for CPU, GPU, FPGA, or other architectures that support OpenCL and SYCL. It was written with GPUs in mind, so targeting other architectures may require heavy optimization.
+The benchmarks can be used for CPU, GPU, FPGA, or other architectures that support OpenCL and SYCL. It was written with GPUs in mind, so targeting other architectures may require heavy optimization.
 
 ##  Prerequisites
 
@@ -51,5 +51,15 @@ A bash script is provided to attempt to run all the benchmarks:
 ## Development Team
 Authored and maintained by Zheming Jin (https://github.com/zjin-lcf) with help from Nevin Liber
 
+## Documentation
+Jin, Zheming. The Rodinia Benchmark Suite in SYCL. No. ANL/ALCF-20/6. Argonne National Lab. Argonne, IL (United States), 2020
+
 ## Contributions
 Comments and suggestions are welcome. 
+
+## Reference
+[1] Che, S., Boyer, M., Meng, J., Tarjan, D., Sheaffer, J.W., Lee, S.H. and Skadron, K., 2009, October. Rodinia: A benchmark suite for
+heterogeneous computing. In 2009 IEEE international symposium on workload characterization (IISWC) (pp. 44-54). IEEE.  
+[2] Che, S., Sheaffer, J.W., Boyer, M., Szafaryn, L.G., Wang, L. and Skadron, K., 2010, December. A characterization of the Rodinia
+benchmark suite with comparison to contemporary CMP workloads. In IEEE International Symposium on Workload Characterization (IISWC'10) (pp. 1-11). IEEE.
+
