@@ -83,9 +83,9 @@ int	col;
 int	sprow_idx(const SPROW *r, int col)
 #endif
 {
-   register int		lo, hi, mid;
+   int		lo, hi, mid;
    int			tmp;
-   register row_elt	*r_elt;
+   row_elt	*r_elt;
    
    /*******************************************
      if ( r == (SPROW *)NULL )

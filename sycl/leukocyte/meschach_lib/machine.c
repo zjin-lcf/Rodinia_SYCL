@@ -38,18 +38,18 @@ static	char	*rcsid = "$Id: machine.c,v 1.4 1994/01/13 05:28:56 des Exp $";
 /* __ip__ -- inner product */
 #ifndef ANSI_C
 double	__ip__(dp1,dp2,len)
-register Real	*dp1, *dp2;
+ Real	*dp1, *dp2;
 int	len;
 #else
 double	__ip__(const Real *dp1, const Real *dp2, int len)
 #endif
 {
 #ifdef VUNROLL
-    register int	len4;
-    register Real	sum1, sum2, sum3;
+     int	len4;
+     Real	sum1, sum2, sum3;
 #endif
-    register int	i;
-    register Real     sum;
+     int	i;
+     Real     sum;
 
     sum = 0.0;
 #ifdef VUNROLL
@@ -78,16 +78,16 @@ double	__ip__(const Real *dp1, const Real *dp2, int len)
 /* __mltadd__ -- scalar multiply and add c.f. v_mltadd() */
 #ifndef ANSI_C
 void	__mltadd__(dp1,dp2,s,len)
-register Real	*dp1, *dp2;
-register double s;
-register int	len;
+ Real	*dp1, *dp2;
+ double s;
+ int	len;
 #else
 void	__mltadd__(Real *dp1, const Real *dp2, double s, int len)
 #endif
 {
-    register int	i;
+     int	i;
 #ifdef VUNROLL
-    register int        len4;
+     int        len4;
     
     len4 = len / 4;
     len  = len % 4;
@@ -108,14 +108,14 @@ void	__mltadd__(Real *dp1, const Real *dp2, double s, int len)
 /* __smlt__ scalar multiply array c.f. sv_mlt() */
 #ifndef ANSI_C
 void	__smlt__(dp,s,out,len)
-register Real	*dp, *out;
-register double s;
-register int	len;
+ Real	*dp, *out;
+ double s;
+ int	len;
 #else
 void	__smlt__(const Real *dp, double s, Real *out, int len)
 #endif
 {
-    register int	i;
+     int	i;
     for ( i = 0; i < len; i++ )
 	out[i] = s*dp[i];
 }
@@ -123,13 +123,13 @@ void	__smlt__(const Real *dp, double s, Real *out, int len)
 /* __add__ -- add arrays c.f. v_add() */
 #ifndef ANSI_C
 void	__add__(dp1,dp2,out,len)
-register Real	*dp1, *dp2, *out;
-register int	len;
+ Real	*dp1, *dp2, *out;
+ int	len;
 #else
 void	__add__(const Real *dp1, const Real *dp2, Real *out, int len)
 #endif
 {
-    register int	i;
+     int	i;
     for ( i = 0; i < len; i++ )
 	out[i] = dp1[i] + dp2[i];
 }
@@ -137,13 +137,13 @@ void	__add__(const Real *dp1, const Real *dp2, Real *out, int len)
 /* __sub__ -- subtract arrays c.f. v_sub() */
 #ifndef ANSI_C
 void	__sub__(dp1,dp2,out,len)
-register Real	*dp1, *dp2, *out;
-register int	len;
+ Real	*dp1, *dp2, *out;
+ int	len;
 #else
 void	__sub__(const Real *dp1, const Real *dp2, Real *out, int len)
 #endif
 {
-    register int	i;
+     int	i;
     for ( i = 0; i < len; i++ )
 	out[i] = dp1[i] - dp2[i];
 }
@@ -151,8 +151,8 @@ void	__sub__(const Real *dp1, const Real *dp2, Real *out, int len)
 /* __zero__ -- zeros an array of floating point numbers */
 #ifndef ANSI_C
 void	__zero__(dp,len)
-register Real	*dp;
-register int	len;
+ Real	*dp;
+ int	len;
 #else
 void	__zero__(Real *dp, int len)
 #endif
