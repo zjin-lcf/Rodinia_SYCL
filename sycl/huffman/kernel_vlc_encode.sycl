@@ -1,0 +1,149 @@
+	unsigned int kn = item.get_global_id(0);
+	unsigned int k = item.get_local_id(0);
+	unsigned int kc, startbit, wrbits;
+
+	unsigned long long cw64 =0;
+	unsigned int val32, codewordlen = 0;
+	unsigned char tmpbyte, tmpcwlen;
+	unsigned int tmpcw32;
+
+#ifdef CACHECWLUT
+	/* Load the codewords and the original data*/
+	sm[k].store(gm_codewords[k]);
+	sm[NUM_SYMBOLS+k].store(gm_codewordlens[k]);
+	val32			= data[kn];
+	item.barrier(access::fence_space::local_space);
+	for(unsigned int i=0; i<4;i++) {
+		tmpbyte = (unsigned char)(val32>>((3-i)*8));
+		tmpcw32 = atomic_load(sm[tmpbyte]);
+		tmpcwlen = atomic_load(sm[NUM_SYMBOLS+tmpbyte]);
+		cw64 = (cw64<<tmpcwlen) | tmpcw32;
+		codewordlen+=tmpcwlen;
+	}
+	sm[2*NUM_SYMBOLS+k].store(codewordlen);
+#else
+	val32 = data[kn];
+	for(unsigned int i=0; i<4;i++) {
+		tmpbyte = (unsigned char)(val32>>((3-i)*8));
+		tmpcw32 = gm_codewords[tmpbyte];
+		tmpcwlen = gm_codewordlens[tmpbyte];
+		cw64 = (cw64<<tmpcwlen) | tmpcw32;
+		codewordlen+=tmpcwlen;
+	}
+	sm[k].store(codewordlen);
+#endif
+	item.barrier(access::fence_space::local_space);
+
+	/* Prefix sum of codeword lengths (denoted in bits) [inplace implementation] */ 
+	unsigned int offset = 1;
+
+    /* Build the sum in place up the tree */
+    for (unsigned int d = (item.get_local_range(0))>>1; d > 0; d >>= 1)  {
+        item.barrier(access::fence_space::local_space);
+        if (k < d)   {
+            unsigned char ai = offset*(2*k+1)-1;
+            unsigned char bi = offset*(2*k+2)-1;
+#ifdef CACHECWLUT
+            sm[2*NUM_SYMBOLS+bi].store(
+              atomic_load(sm[2*NUM_SYMBOLS+bi]) + 
+              atomic_load(sm[2*NUM_SYMBOLS+ai]));
+#else
+            sm[bi].store(
+              atomic_load(sm[bi]) + 
+              atomic_load(sm[ai]));
+#endif
+        }
+        offset *= 2;
+    }
+
+    /* scan back down the tree */
+    /* clear the last element */
+    if (k == 0) 
+#ifdef CACHECWLUT
+      sm[2*NUM_SYMBOLS+item.get_local_range(0) - 1].store(0);    
+#else
+      sm[item.get_local_range(0) - 1].store(0);    
+#endif
+
+    // traverse down the tree building the scan in place
+    for (unsigned int d = 1; d < item.get_local_range(0); d *= 2)    {
+        offset >>= 1;
+        item.barrier(access::fence_space::local_space);
+        if (k < d)   {
+            unsigned char ai = offset*(2*k+1)-1;
+            unsigned char bi = offset*(2*k+2)-1;
+#ifdef CACHECWLUT
+            unsigned int t   = atomic_load(sm[2*NUM_SYMBOLS+ai]);
+            sm[2*NUM_SYMBOLS+ai].store(atomic_load(sm[2*NUM_SYMBOLS+bi]));
+            sm[2*NUM_SYMBOLS+bi].store(atomic_load(sm[2*NUM_SYMBOLS+bi]) + t);
+#else
+            unsigned int t   = atomic_load(sm[ai]);
+            sm[ai].store(atomic_load(sm[bi]);
+            sm[bi].store(atomic_load(sm[bi]) + t);
+#endif
+        }
+    }
+	item.barrier(access::fence_space::local_space);
+
+	if (k == item.get_local_range(0)-1) {
+#ifdef CACHECWLUT
+		outidx[item.get_group(0)] = atomic_load(sm[2*NUM_SYMBOLS+k]) + codewordlen;
+		kcmax[0] = (atomic_load(sm[2*NUM_SYMBOLS+k]) + codewordlen)/32;
+#else
+		outidx[item.get_group(0)] = atomic_load(sm[k]) + codewordlen;
+		kcmax[0] = (atomic_load(sm[k]) + codewordlen)/32;
+#endif
+	}
+
+	/* Write the codes */
+#ifdef CACHECWLUT
+	kc = atomic_load(sm[2*NUM_SYMBOLS+k])/32; 
+	startbit = atomic_load(sm[2*NUM_SYMBOLS+k])%32; 
+	sm[2*NUM_SYMBOLS+k].store(0);
+#else
+	kc = atomic_load(sm[k])/32; 
+	startbit = atomic_load(sm[k])%32; 
+	sm[k].store(0);
+#endif
+	item.barrier(access::fence_space::local_space);
+
+	/* Part 1*/
+	wrbits		= codewordlen > (32-startbit)? (32-startbit): codewordlen;
+	tmpcw32		= (unsigned int)(cw64>>(codewordlen - wrbits));		
+#ifdef CACHECWLUT
+	atomic_fetch_or(sm[2*NUM_SYMBOLS+kc], tmpcw32<<(32-startbit-wrbits));	//shift left in case it's shorter then the available space
+#else
+	atomic_fetch_or(sm[kc], tmpcw32<<(32-startbit-wrbits));	//shift left in case it's shorter then the available space
+#endif
+	codewordlen		-= wrbits;
+
+	/*Part 2*/
+	if (codewordlen) {
+    wrbits		= codewordlen > 32 ? 32: codewordlen;
+    tmpcw32		= (unsigned int)(cw64>>(codewordlen - wrbits)) & ((1<<wrbits)-1);	
+  #ifdef CACHECWLUT
+    atomic_fetch_or(sm[2*NUM_SYMBOLS+kc+1], tmpcw32<<(32-wrbits));
+  #else
+    atomic_fetch_or(sm[kc+1], tmpcw32<<(32-wrbits));
+  #endif
+    codewordlen	-= wrbits;
+	}
+
+	/*Part 3*/
+	if (codewordlen) {
+    tmpcw32		= (unsigned int)(cw64 & ((1<<codewordlen)-1));
+  #ifdef CACHECWLUT
+    atomic_fetch_or(sm[2*NUM_SYMBOLS+kc+2], tmpcw32<<(32-codewordlen));
+  #else
+    atomic_fetch_or(sm[kc+2], tmpcw32<<(32-codewordlen));
+  #endif
+	}
+
+	item.barrier(access::fence_space::local_space);
+
+	if (k<=kcmax[0]) 
+    #ifdef CACHECWLUT
+    out[kn] = atomic_load(sm[2*NUM_SYMBOLS+k]);
+    #else
+    out[kn] = atomic_load(sm[k]);
+    #endif
