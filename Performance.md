@@ -1,4 +1,4 @@
-##  Performance Evaluation of Rodinia Benchmark Suite in SYCL
+##  Performance Evaluation of the Rodinia Benchmark Suite in SYCL
 
 ##### Device offloading time in seconds on the Intel<sup>®</sup> UHD630 integrated GPU with OpenCL and Level0 plugin interfaces
 | Name | OpenCL | Level0 |
