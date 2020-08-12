@@ -1,4 +1,4 @@
-##  Rodinia Benchmark Suite in SYCL
+##  The Rodinia Benchmark Suite in SYCL
 
 The benchmarks can be used for CPU, GPU, FPGA, or other architectures that support OpenCL and SYCL. It was written with GPUs in mind, so targeting other architectures may require heavy optimization.
 
@@ -56,6 +56,9 @@ Jin, Zheming. The Rodinia Benchmark Suite in SYCL. No. ANL/ALCF-20/6. Argonne Na
 
 ## Contributions
 Comments and suggestions are welcome. 
+
+## Acknowledgement
+Results presented were obtained using the Chameleon testbed supported by the National Science Foundation and the Intel<sup>®</sup> DevCloud.
 
 ## Reference
 [1] Che, S., Boyer, M., Meng, J., Tarjan, D., Sheaffer, J.W., Lee, S.H. and Skadron, K., 2009, October. Rodinia: A benchmark suite for
