@@ -1,6 +1,9 @@
 ##  Performance Evaluation of the Rodinia Benchmark Suite in SYCL
 
-##### Device offloading time in seconds on the Intel<sup>®</sup> UHD630 integrated GPU with OpenCL and Level0 plugin interfaces
+##### Device offloading time in seconds using OpenCL and Level0 plugin interfaces
+Software: Intel<sup>®</sup> oneAPI Beta08 Toolkit, Ubuntu 18.04  
+Platform: Intel<sup>®</sup> Xeon E-2176G with a Gen9.5 UHD630 integrated GPU
+
 | Name | OpenCL | Level0 |
 | --- | --- | --- | 
 | b++tree | 0.86/0.54 | 0.89/0.52 |
