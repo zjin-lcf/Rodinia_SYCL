@@ -24,5 +24,5 @@
 | particle-filter | 54.8 | 54.8 |
 | pathefinder | 0.43 | 0.47 |
 | srad | 1.0 | 1.3 |
-| streamcluster | 0.9 | 14.1 |
+| streamcluster | 9.9 | 14.2 |
 
