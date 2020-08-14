@@ -1,8 +1,9 @@
 ##  Performance Evaluation of the Rodinia Benchmark Suite in SYCL
 
 ###### Software 
-Intel<sup>®</sup> oneAPI Beta08 Toolkit, Ubuntu 18.04
-Codeplay ComputeCpp<sup>™</sup> CE 2.1.0
+Intel<sup>®</sup> oneAPI Beta08 Toolkit  
+Codeplay ComputeCpp<sup>™</sup> CE 2.1.0  
+Ubuntu 18.04
 ###### Platform
 Intel<sup>®</sup> Xeon E-2176G with a Gen9.5 UHD630 integrated GPU
 
@@ -26,7 +27,7 @@ Intel<sup>®</sup> Xeon E-2176G with a Gen9.5 UHD630 integrated GPU
 | lavaMD | 0.4 | 0.44 | 0.31 |
 | leukocyte | 0.49 | 0.53 | 0.33 |
 | lud | 1.42 | 1.55 | 1.42 |
-| myoctye | 3.4 | 6.2 | 5.6 |
+| myocyte | 3.4 | 6.2 | 5.6 |
 | nn | 0.31 | 0.35 | 0.24 |
 | nw | 0.53 | 0.61 | 0.47 |
 | particle-filter | 54.8 | 54.8 | 51.1 |
