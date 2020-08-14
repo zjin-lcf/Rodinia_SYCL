@@ -1,13 +1,14 @@
-##  Performance of Rodinia Benchmark Suite in SYCL
+##  Performance Evaluation of the Rodinia Benchmark Suite in SYCL
 
-Software
-Intel<sup>®</sup> oneAPI Toolkit Beta08 with OpenCL and Level0 plugin interfaces 
+###### Software 
+Intel<sup>®</sup> oneAPI Beta08 Toolkit, Ubuntu 18.04
 Codeplay ComputeCpp<sup>™</sup> CE 2.1.0
+###### Platform
+Intel<sup>®</sup> Xeon E-2176G with a Gen9.5 UHD630 integrated GPU
 
-Hardware
-Intel<sup>®</sup> Xeon E-2176G with a Gen9.5 UHD630 integrated GP
 
-### Device offloading time in seconds 
+### Device offloading time in seconds (PI: plugin interface)
+
 | Name | OpenCL PI | Level0 PI | ComputeCpp |
 | --- | --- | --- | 
 | b++tree | 0.86/0.54 | 0.89/0.52 | 0.26/0.09 |
