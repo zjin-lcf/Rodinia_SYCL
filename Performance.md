@@ -10,7 +10,7 @@ Intel<sup>®</sup> Xeon E-2176G with a Gen9.5 UHD630 integrated GPU
 ### Device offloading time in seconds (PI: plugin interface)
 
 | Name | OpenCL PI | Level0 PI | ComputeCpp |
-| --- | --- | --- | 
+| --- | --- | --- | --- |
 | b++tree | 0.86/0.54 | 0.89/0.52 | 0.26/0.09 |
 | backprop | 0.36 | 0.4 | 0.26 |
 | bfs | 0.36 | 0.4 | 0.27 |
