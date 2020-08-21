@@ -18,7 +18,7 @@ Intel<sup>®</sup> Xeon E-2176G with a Gen9.5 UHD630 integrated GPU
 | cfd | 6.3 | 10.5 | 10.2 |
 | dwt2d | 0.69 | 0.73 | 0.43 |
 | gaussian | 0.54 | 0.88 | 0.75 |
-| heatwall | 26.9 | 27.8 | 8.4 |
+| heartwall | 26.9 | 27.8 | 8.4 |
 | hotspot | 0.38 | 0.41 | 0.26 |
 | hotspot3D | 0.55 | 0.61 | 0.49 |
 | huffman | 0.0095 | 0.016 | 0.013 |
