@@ -154,17 +154,16 @@ int main(int argc, char **argv){
 #endif
     queue q(dev_sel);
 
-    int nworkitems = BLOCK_SIZE;
     int workgroupsize = BLOCK_SIZE;
 #ifdef DEBUG
-    if(nworkitems < 1 || workgroupsize < 0){
+    if(workgroupsize < 0){
 	    printf("ERROR: invalid or missing <num_work_items>[/<work_group_size>]\n"); 
 	    return -1;
     }
 #endif
     // set global and local workitems
-    const size_t local_work[3] = { (size_t)workgroupsize, 1, 1 }; 
-    size_t global_work[3] = { (size_t)nworkitems, 1, 1 }; //nworkitems = no. of GPU threads
+    const size_t local_work = (size_t)workgroupsize;
+    size_t global_work;
 
     const int worksize = max_cols - 1;
 #ifdef DEBUG
@@ -185,20 +184,20 @@ int main(int argc, char **argv){
 #ifdef DEBUG
     printf("Processing upper-left matrix\n");
 #endif
-    for( int blk = 1 ; blk <= worksize/BLOCK_SIZE ; blk++){
+    for( int blk = 1 ; blk <= block_width ; blk++){
 
-      global_work[0] = BLOCK_SIZE * blk; // kernel arg set every iteration
+      global_work = BLOCK_SIZE * blk; // kernel arg set every iteration
 #ifdef DEBUG
-      printf("global size: %d local size: %d\n", global_work[0], local_work[0]);
+      printf("global size: %d local size: %d\n", global_work, local_work);
 #endif
       q.submit([&](handler& cgh) {
           auto d_input_itemsets_acc = input_itemsets_d.get_access<sycl_read_write>(cgh);
           auto d_reference_acc = reference_d.get_access<sycl_read_write>(cgh);
-          accessor <float, 1, sycl_read_write, access::target::local> input_itemsets_l ((BLOCK_SIZE + 1) *(BLOCK_SIZE+1), cgh);
-          accessor <float, 1, sycl_read_write, access::target::local> reference_l (BLOCK_SIZE * BLOCK_SIZE, cgh);
+          accessor <int, 1, sycl_read_write, access::target::local> input_itemsets_l ((BLOCK_SIZE + 1) *(BLOCK_SIZE+1), cgh);
+          accessor <int, 1, sycl_read_write, access::target::local> reference_l (BLOCK_SIZE * BLOCK_SIZE, cgh);
           cgh.parallel_for<class kernel1>(
-            nd_range<1>(range<1>(global_work[0]),
-              range<1>(local_work[0])), [=] (nd_item<1> item) {
+            nd_range<1>(range<1>(global_work),
+              range<1>(local_work)), [=] (nd_item<1> item) {
 #include "kernel1.sycl"
           });
       });
@@ -207,16 +206,16 @@ int main(int argc, char **argv){
 #ifdef DEBUG
     printf("Processing lower-right matrix\n");
 #endif
-    for( int blk = worksize/BLOCK_SIZE - 1 ; blk >= 1 ; blk--){	   
-      global_work[0] = BLOCK_SIZE * blk;
+    for( int blk = block_width - 1 ; blk >= 1 ; blk--){	   
+      global_work = BLOCK_SIZE * blk;
       q.submit([&](handler& cgh) {
           auto d_input_itemsets_acc = input_itemsets_d.get_access<sycl_read_write>(cgh);
           auto d_reference_acc = reference_d.get_access<sycl_read_write>(cgh);
-          accessor <float, 1, sycl_read_write, access::target::local> input_itemsets_l ((BLOCK_SIZE + 1) *(BLOCK_SIZE+1), cgh);
-          accessor <float, 1, sycl_read_write, access::target::local> reference_l (BLOCK_SIZE * BLOCK_SIZE, cgh);
+          accessor <int, 1, sycl_read_write, access::target::local> input_itemsets_l ((BLOCK_SIZE + 1) *(BLOCK_SIZE+1), cgh);
+          accessor <int, 1, sycl_read_write, access::target::local> reference_l (BLOCK_SIZE * BLOCK_SIZE, cgh);
           cgh.parallel_for<class kernel2>(
-            nd_range<1>(range<1>(global_work[0]),
-              range<1>(local_work[0])), [=] (nd_item<1> item) {
+            nd_range<1>(range<1>(global_work),
+              range<1>(local_work)), [=] (nd_item<1> item) {
 #include "kernel2.sycl"
             });
           });
