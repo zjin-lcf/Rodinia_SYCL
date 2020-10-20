@@ -1,4 +1,4 @@
-##  The Rodinia Benchmark Suite in SYCL
+##  The Rodinia Benchmark Suite in SYCL (Deprecated)
 
 The benchmarks can be used for CPU, GPU, FPGA, or other architectures that support OpenCL and SYCL. It was written with GPUs in mind, so targeting other architectures may require heavy optimization.
 
